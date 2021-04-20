@@ -1,0 +1,49 @@
+.formWrapper {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #007bff;
+}
+
+.formContainer {
+  background-color: white;
+  padding: 50px 30px;
+  border-radius: 5px;
+}
+
+.heading {
+  font-size: 1.9rem;
+}
+
+.formHeading > p {
+  font-size: 0.9rem;
+}
+.formContainer input,
+.formContainer select {
+  margin: 10px 0;
+  background-color: #f4f4ee;
+  border: none;
+}
+
+.formContainer input:focus,
+.formContainer select:focus {
+  background-color: #f5f5f5;
+}
+
+@media screen and (min-width: 700px) {
+  .name {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 2%;
+  }
+
+  .formContainer {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .formContainer {
+    width: 90%;
+  }
+}
