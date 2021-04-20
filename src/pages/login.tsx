@@ -14,31 +14,29 @@ const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    remember: false,
+    remember: false
   });
 
   const { user, authenticating, isAuthenticated } = useUser();
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      return;
-    } else {
+    if (!authenticating && isAuthenticated) {
       Router.replace("/");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, authenticating]);
 
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     name == "remember"
-      ? setFormData((prevState) => ({
+      ? setFormData(prevState => ({
           ...prevState,
-          remember: !prevState.remember,
+          remember: !prevState.remember
         }))
-      : setFormData((prevState) => ({
+      : setFormData(prevState => ({
           ...prevState,
-          [name]: value,
+          [name]: value
         }));
   };
 
@@ -51,7 +49,7 @@ const Login = () => {
       const { data } = await axios.post("/api/users/login", {
         username,
         password,
-        remember,
+        remember
       });
 
       if (data.refreshToken) {

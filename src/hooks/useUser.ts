@@ -5,8 +5,8 @@ import makeSecuredRequest, { getNewToken } from "../utils/makeSecuredRequest";
 const useUser = () => {
   const { data: user, error } = useSWR("/api/users/user", makeSecuredRequest);
 
-  const [authenticating, setAuthenticating] = useState(Boolean);
-  const [isAuthenticated, setIsAuthenticated] = useState(Boolean);
+  const [authenticating, setAuthenticating] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -28,7 +28,7 @@ const useUser = () => {
     error,
     fetchingUser: !error && !user,
     authenticating,
-    isAuthenticated,
+    isAuthenticated
   };
 };
 

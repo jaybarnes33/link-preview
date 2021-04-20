@@ -8,12 +8,11 @@ const dashboard = () => {
   const { isAuthenticated, authenticating } = useUser();
 
   useEffect(() => {
-    if (isAuthenticated == true) {
-      return;
-    } else {
+    if (!authenticating && !isAuthenticated) {
+      // if we're done loading and user isn't authenticated
       Router.replace("/login");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, authenticating]); // add authenticating to dependencies
   return (
     <Layout>
       <div className={styles.wrapper}>
