@@ -23,18 +23,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       const { url } = req.body;
 
-      const data: any = await scrapeData(url);
+      const data = await scrapeData(url); // This returns an Array of Objects
 
       console.log(data);
 
-      const { title, description, author, image, favicon } = data;
+      // Since expected length of array is 1
+      // You can simply destructure it like [singleData] = data; to pick the first member
+      // The continue to destructure your object [{ child1, child2 }] = data;
+      const [{ title, description, author, image, favicon }] = data;
+
       const card = new Card({
         link: url,
         title: title,
         description: description,
         author: author,
         image: image,
-        favicon: favicon,
+        favicon: favicon
       });
 
       await card.save();
