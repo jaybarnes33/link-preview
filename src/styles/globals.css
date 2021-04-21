@@ -1,8 +1,24 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Sen&family=Ubuntu+Mono&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Ubuntu Mono", monospace;
+}
 .app {
   min-height: 100vh;
+  background-color: #f4f4f4;
 }
 
 header {
   position: fixed;
   top: 0;
+}
+
+* {
+  font-family: "Sen", sans-serif;
 }

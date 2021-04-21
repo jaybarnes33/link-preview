@@ -1,0 +1,7 @@
+.postButton {
+  background-color: #325288 !important;
+
+  border: none;
+  display: flex;
+  margin: auto;
+}
