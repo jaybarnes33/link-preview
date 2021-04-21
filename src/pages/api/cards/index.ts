@@ -40,6 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const card = new Card({
         link: url,
         title: title,
+        creator: userID.toString(),
         description: description,
         author: author,
         image: image,
