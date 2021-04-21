@@ -1,15 +1,39 @@
-const Card = ({ image, title, description, link }) => {
+const Card = ({ data }) => {
   return (
     <>
-      <div className="cardWrapper">
-        <img className="cardImage" src={image} alt={title} />
-
-        <div className="cardText">
-          <h1 className="cardTitle">{title}</h1>
-          <p>{description}</p>
+      <div className="cardContainer">
+        <div className="cardWrapper">
+          {data.image.length > 3 && (
+            <img className="cardImage" src={data.image} alt={data.title} />
+          )}
+          <div className="cardText">
+            <h1 className="cardTitle">{data.title}</h1>
+            <p>{data.description}</p>
+          </div>
         </div>
       </div>
-      <style jsx>{``}</style>
+      <style jsx>{`
+        .cardContainer {
+          display: grid;
+          place-items: center;
+        }
+
+        .cardWrapper {
+          width: 300px;
+        }
+
+        .cardImage {
+          display: flex;
+          margin: auto;
+          width: 100%;
+          height: 150px;
+          object-fit: contain;
+        }
+
+        .cardTitle {
+          font-size: 1.2rem;
+        }
+      `}</style>
     </>
   );
 };

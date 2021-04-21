@@ -14,7 +14,7 @@ const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    remember: false
+    remember: false,
   });
 
   const { user, authenticating, isAuthenticated } = useUser();
@@ -30,13 +30,13 @@ const Login = () => {
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     name == "remember"
-      ? setFormData(prevState => ({
+      ? setFormData((prevState) => ({
           ...prevState,
-          remember: !prevState.remember
+          remember: !prevState.remember,
         }))
-      : setFormData(prevState => ({
+      : setFormData((prevState) => ({
           ...prevState,
-          [name]: value
+          [name]: value,
         }));
   };
 
@@ -49,7 +49,7 @@ const Login = () => {
       const { data } = await axios.post("/api/users/login", {
         username,
         password,
-        remember
+        remember,
       });
 
       if (data.refreshToken) {
@@ -96,7 +96,7 @@ const Login = () => {
           />
           <Form.Group controlId="remember">
             <Form.Check
-              label="admin"
+              label="Remember me"
               name="remember"
               checked={formData.remember}
               onChange={handleChange}

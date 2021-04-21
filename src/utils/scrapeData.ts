@@ -2,7 +2,7 @@ import getUrls from "get-urls";
 import fetch from "node-fetch";
 import cheerio from "cheerio";
 
-const scrapeData = (text: string) => {
+const scrapeData = (text) => {
   const urls = Array.from(getUrls(text));
 
   const requests = urls.map(async (url) => {

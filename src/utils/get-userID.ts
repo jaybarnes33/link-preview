@@ -4,8 +4,8 @@ const getUserID = (token: string) => {
   try {
     const payload: any = verify(token, process.env.JWT_SECRET);
     return payload.sub;
-  } catch {
-    return null;
+  } catch (error) {
+    return error.message;
   }
 };
 export default getUserID;

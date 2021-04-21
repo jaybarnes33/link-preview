@@ -13,27 +13,27 @@ export interface ICardSchema extends Document {
 const CardSchema = new mongoose.Schema<ICardSchema>({
   link: {
     required: true,
-    type: String,
+    type: String
   },
   description: {
-    type: String,
+    type: String
   },
   title: {
-    type: String,
+    type: String
   },
   creator: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "User",
+    ref: "User"
   },
   author: {
-    type: String,
+    type: String
   },
   image: {
-    type: String,
+    type: String
   },
   favicon: {
-    type: String,
-  },
+    type: String
+  }
 });
 const Card = mongoose.models.Card || mongoose.model("Card", CardSchema);
 export default Card;
