@@ -2,4 +2,22 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
+  background-image: url("/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero {
+  font-size: 1.6rem;
+}
+
+.main button {
+  background-color: #325288;
+  border: none;
+}
+
+.main div {
+  background-color: #f4f4f4a0;
+  padding: 20px 40px;
+  border-radius: 5px;
 }

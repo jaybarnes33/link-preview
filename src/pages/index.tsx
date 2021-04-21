@@ -27,17 +27,12 @@ export default function Home() {
 
       <main className={styles.main}>
         <div>
-          <p> Save all your links</p>
+          <p className={styles.hero}> Save all your links</p>
           <Link href="/login">
-            <Button
-              className="mr-2 btn-outline-danger px-3"
-              variant="outline-danger"
-            >
-              Login
-            </Button>
+            <Button className={`mr-2 ${styles.login}`}>Login</Button>
           </Link>
           <Link href="/register">
-            <Button className="mr-2 btn-warning">Register</Button>
+            <Button className={`mr-2 ${styles.register}`}>Register</Button>
           </Link>
         </div>
       </main>
