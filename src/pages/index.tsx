@@ -12,10 +12,11 @@ export default function Home() {
   const { user, authenticating, isAuthenticated } = useUser();
 
   useEffect(() => {
-    if (isAuthenticated) {
+    // Check if loading is completed then if user is authenticated
+    if (!authenticating && isAuthenticated) {
       replace("/dashboard");
     }
-  }, [user]);
+  }, [isAuthenticated, authenticating]);
 
   return (
     <Layout>
