@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/lib/mongo";
 import User, { IUserSchema } from "@/models/User";
 import getUserID from "@/utils/get-userID";
-import Card, { ICardSchema, IExampleCard } from "@/models/Card";
+import Card from "@/models/Card";
 import scrapeData from "@/utils/scrapeData";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
