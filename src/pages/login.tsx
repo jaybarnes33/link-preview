@@ -20,8 +20,8 @@ const Login = () => {
   const { user, authenticating, isAuthenticated } = useUser();
 
   useEffect(() => {
-    if (!authenticating && isAuthenticated) {
-      Router.replace("/");
+    if (isAuthenticated && !authenticating) {
+      Router.replace("/dashboard");
     }
   }, [isAuthenticated, authenticating]);
 
@@ -57,6 +57,7 @@ const Login = () => {
       }
 
       setAccessToken(data.accessToken);
+      Router.replace("/dashboard");
     } catch (error) {
       console.log(error.response);
     } finally {
