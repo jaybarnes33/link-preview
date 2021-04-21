@@ -1,5 +1,4 @@
 import mongoose, { Document } from "mongoose";
-import { Card } from "react-bootstrap";
 
 export interface ICardSchema extends Document {
   link: string;
@@ -7,6 +6,8 @@ export interface ICardSchema extends Document {
   author: string;
   image: string;
   title: string;
+  icon: String;
+  creator: String;
 }
 
 const CardSchema = new mongoose.Schema<ICardSchema>({
@@ -17,14 +18,22 @@ const CardSchema = new mongoose.Schema<ICardSchema>({
   description: {
     type: String,
   },
+  title: {
+    type: String,
+  },
   creator: {
     type: mongoose.SchemaTypes.ObjectId,
-    required: true,
     ref: "User",
   },
   author: {
     type: String,
   },
+  image: {
+    type: String,
+  },
+  favicon: {
+    type: String,
+  },
 });
-
+const Card = mongoose.models.Card || mongoose.model("Card", CardSchema);
 export default Card;
