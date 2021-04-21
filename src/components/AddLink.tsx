@@ -1,3 +1,4 @@
+import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import axios from "axios";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
@@ -15,17 +16,10 @@ const AddLink = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-        },
-      };
-      const { data } = await axios.post(
-        "/api/cards/",
-        JSON.stringify({ url: link }),
-        config
-      );
+
+      const data = await makeSecuredRequest("/api/cards/", "POST", {
+        url: link,
+      });
 
       setData(data);
       console.log(data);
@@ -46,7 +40,7 @@ const AddLink = () => {
         value={link}
         onChange={(e) => setLink(e.target.value)}
       />
-      <Button type="submit" className="my-2 btn-sm" variant="primary">
+      <Button type="submit" className="my-2" variant="primary">
         Post
       </Button>
     </Form>
