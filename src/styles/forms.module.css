@@ -18,7 +18,7 @@
 .formHeading > p {
   font-size: 0.9rem;
 }
-.formContainer input,
+.formContainer .input[type="text"],
 .formContainer select {
   margin: 10px 0;
   background-color: #f4f4ee;
