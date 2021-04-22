@@ -86,6 +86,7 @@ const Register = () => {
               name="fName"
               value={formData.fName}
               onChange={handleChange}
+              required
               placeholder="First Name"
             />
             <Form.Control
@@ -93,6 +94,7 @@ const Register = () => {
               name="lName"
               value={formData.lName}
               onChange={handleChange}
+              required
               placeholder="Last Name"
             />
           </Form.Group>
@@ -101,6 +103,7 @@ const Register = () => {
             name="username"
             value={formData.username}
             onChange={handleChange}
+            required
             placeholder="Username"
           />
           <Form.Control
@@ -108,6 +111,7 @@ const Register = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            required
             placeholder="Email"
           />
           <Form.Control
@@ -115,6 +119,7 @@ const Register = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            required
             placeholder="Password"
           />
           <Form.Control
@@ -122,10 +127,16 @@ const Register = () => {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
+            required
             placeholder="Confirm Password"
           />
 
-          <Form.Control name="country" as="select" onChange={handleChange}>
+          <Form.Control
+            name="country"
+            as="select"
+            onChange={handleChange}
+            required
+          >
             <option value="">Select a country</option>
             {countries.map((country) => (
               <option value={country.name} key={country.name}>

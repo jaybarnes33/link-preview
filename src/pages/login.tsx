@@ -89,6 +89,7 @@ const Login = () => {
             className="mb-4"
             value={formData.username}
             onChange={handleChange}
+            required
             placeholder="Username"
           />
 
@@ -98,6 +99,7 @@ const Login = () => {
             className="mb-4"
             value={formData.password}
             onChange={handleChange}
+            required
             placeholder="Password"
           />
           <Form.Group controlId="remember">
