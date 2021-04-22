@@ -3,7 +3,7 @@ const Card = ({ data }) => {
     <>
       <div className="cardContainer">
         <div className="cardWrapper">
-          {data.image.length > 3 && (
+          {data.image?.length > 3 && (
             <img className="cardImage" src={data.image} alt={data.title} />
           )}
           <div className="cardText">
