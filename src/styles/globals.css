@@ -26,7 +26,7 @@ header {
   color: white;
   font-weight: bold;
   font-size: 1.6rem;
-  letter-spacing: ;
+  letter-spacing: 3px;
 }
 
 .nav-item,
@@ -49,4 +49,17 @@ a:hover {
 }
 * {
   font-family: "Sen", sans-serif;
+}
+
+@media screen and (max-width: 995px) {
+  .nav-item {
+    padding: 10px;
+    font-size: 1.5rem;
+  }
+
+  .navbar-collapse {
+    padding-top: 25vh;
+    min-height: 100vh;
+    text-align: center;
+  }
 }
