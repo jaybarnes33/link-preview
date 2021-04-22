@@ -1,5 +1,5 @@
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
-import axios from "axios";
+import styles from "@/styles/cards.module.css";
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Card from "./Card";
@@ -36,12 +36,18 @@ const AddLink = () => {
       {message && <Message variant="danger" children={message} />}
       {isDone && !loading && <Card data={data} />}
       <Form.Control
+        className={styles.input}
         type="url"
         value={link}
+        placeholder="Enter a link to preview"
         onChange={(e) => setLink(e.target.value)}
       />
-      <Button type="submit" className="my-2" variant="primary">
-        Post
+      <Button
+        type="submit"
+        className={`my-2 px-4 ${styles.postButton}`}
+        variant="primary"
+      >
+        Add
       </Button>
     </Form>
   );

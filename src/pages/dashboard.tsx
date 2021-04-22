@@ -4,6 +4,7 @@ import styles from "@/styles/dashboard.module.css";
 import AddLink from "@/components/AddLink";
 import Router from "next/router";
 import useUser from "@/hooks/useUser";
+import Cards from "@/components/Cards";
 const dashboard = () => {
   const { isAuthenticated, authenticating } = useUser();
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,7 @@ const dashboard = () => {
     <Layout>
       <div className={styles.wrapper}>
         <AddLink />
+        <Cards />
       </div>
     </Layout>
   );

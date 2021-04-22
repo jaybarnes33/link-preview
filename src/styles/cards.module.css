@@ -1,0 +1,29 @@
+.postButton {
+  background-color: #8ab6d6 !important;
+
+  border: none;
+  display: flex;
+  margin: auto;
+}
+
+.input {
+  width: 500px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 340px) and (max-width: 500px) {
+  .input {
+    width: 320px;
+  }
+}
+
+@media (min-width: 700px) {
+  .input {
+    width: 600px;
+  }
+}

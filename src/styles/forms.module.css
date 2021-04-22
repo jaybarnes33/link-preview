@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background-color: #007bff;
+  background-color: #1597bb;
 }
 
 .formContainer {
@@ -32,6 +32,10 @@
   background-color: #f5f5f5;
 }
 
+.formContainer button {
+  background-color: #325288 !important;
+  border: none;
+}
 @media screen and (min-width: 700px) {
   .name {
     display: grid;

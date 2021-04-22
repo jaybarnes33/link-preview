@@ -2,4 +2,8 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
+  padding-top: 150px;
+
+  background-size: cover;
+  background-position: center;
 }
