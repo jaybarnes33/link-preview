@@ -7,6 +7,8 @@ import styles from "../styles/forms.module.css";
 import { setAccessToken } from "../misc/token";
 import axios from "axios";
 import useUser from "../hooks/useUser";
+import Loader from "@/components/Loader";
+import Message from "@/components/Message";
 const Login = () => {
   // Props
 
@@ -26,6 +28,7 @@ const Login = () => {
   }, [isAuthenticated, authenticating]);
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -59,7 +62,7 @@ const Login = () => {
       setAccessToken(data.accessToken);
       Router.replace("/dashboard");
     } catch (error) {
-      console.log(error.response);
+      setError(error.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -70,6 +73,8 @@ const Login = () => {
       <Head>
         <title>Sign in</title>
       </Head>
+      {loading && <Loader />}
+      {error && <Message variant="danger">{error}</Message>}
       <Form onSubmit={handleSubmit} className={styles.formContainer}>
         <div className={styles.formHeading}>
           <h1 className={styles.heading}>Log in</h1>

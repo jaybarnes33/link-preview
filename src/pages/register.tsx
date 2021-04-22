@@ -7,6 +7,8 @@ import countries from "@/data/countries";
 import axios from "axios";
 import useUser from "../hooks/useUser";
 import Link from "next/link";
+import Loader from "@/components/Loader";
+import Message from "@/components/Message";
 const Register = () => {
   // Props
   const { replace } = useRouter();
@@ -20,7 +22,6 @@ const Register = () => {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
   const [formData, setFormData] = useState({
     fName: "",
     lName: "",
@@ -55,8 +56,8 @@ const Register = () => {
         });
 
         replace("/login");
-      } catch (error) {
-        console.log(error.response);
+      } catch (e) {
+        setMessage(e.response.data.error);
       } finally {
         setLoading(false);
       }
@@ -69,6 +70,8 @@ const Register = () => {
       <Head>
         <title>Register</title>
       </Head>
+      {loading && <Loader />}
+      {message && <Message variant="danger">{message}</Message>}
       <Form className={styles.formContainer} onSubmit={handleSubmit}>
         <div className={styles.formHeading}>
           <h1 className={styles.heading}>Sign up</h1>

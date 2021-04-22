@@ -44,7 +44,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         description: description,
         author: author,
         image: image.startsWith("/") ? url + image : image,
-        favicon: favicon
+        favicon: favicon.startsWith("/") ? url + favicon : favicon,
       });
 
       await card.save();

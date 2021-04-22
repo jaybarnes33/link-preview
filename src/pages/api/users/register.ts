@@ -25,11 +25,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         await user.save();
         res.status(201).json(user);
       } else {
-        res.status(403).json("User already exists");
+        res.status(403).json({ error: "User already exists" });
       }
     } catch (error) {
-      console.log(error.message);
-      res.status(500).end("Something went wrong");
+      res.status(500).json({ error: "Something went wrong" });
     }
   }
 };

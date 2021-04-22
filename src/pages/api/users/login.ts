@@ -14,28 +14,27 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         $or: [{ username: username }],
       });
 
-      if (!user)
+      if (!user) {
         return res.status(400).json({
           message: `User with username ${username} does not exist`,
           key: "username",
         });
-
-      if (!user.matchPassword(password))
+      } else if (!(await user.matchPassword(password))) {
         return res
           .status(400)
           .json({ message: "Password is incorrect", key: "password" });
-
-      const accessToken = generateAccessToken({ sub: user._id });
-      const refreshToken = generateRefreshToken({ sub: user._id });
-
-      if (remember) {
-        setTokenCookie(res, refreshToken);
-        res.json({ accessToken });
       } else {
-        res.json({ accessToken, refreshToken });
+        const accessToken = generateAccessToken({ sub: user._id });
+        const refreshToken = generateRefreshToken({ sub: user._id });
+
+        if (remember) {
+          setTokenCookie(res, refreshToken);
+          res.json({ accessToken });
+        } else {
+          res.json({ accessToken, refreshToken });
+        }
       }
     } catch (error) {
-      console.log(error.message);
       res.status(500).end("Something went wrong");
     }
   }
