@@ -29,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
         if (remember) {
           setTokenCookie(res, refreshToken);
-          res.json({ accessToken });
+          res.json({ accessToken, refreshToken });
         } else {
           res.json({ accessToken, refreshToken });
         }
