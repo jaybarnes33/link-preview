@@ -36,8 +36,10 @@ const AddLink = () => {
       {message && <Message variant="danger" children={message} />}
       {isDone && !loading && <Card data={data} />}
       <Form.Control
+        className={styles.input}
         type="url"
         value={link}
+        placeholder="Enter a link to preview"
         onChange={(e) => setLink(e.target.value)}
       />
       <Button

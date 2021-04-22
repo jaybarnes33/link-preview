@@ -18,12 +18,12 @@ const Cards = () => {
 
   useEffect(() => {
     fetchCards();
-  }, [fetchCards]);
+  }, [fetchCards, cards, token]);
 
   return (
     <div className={styles.cardWrapper}>
       {cards.map((card) => (
-        <Card data={card} />
+        <Card key={card._id} data={card} />
       ))}
     </div>
   );

@@ -42,6 +42,8 @@ const Card = ({ data }) => {
           height: 160px;
           object-fit: cover;
 
+          border: 1px solid #1597bb;
+          padding: -5px;
           border-radius: 20px;
           margin-bottom: 10px;
         }
