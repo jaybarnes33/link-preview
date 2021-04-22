@@ -2,7 +2,8 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
-  background-image: url("/bg.jpg");
+  padding-top: 150px;
+
   background-size: cover;
   background-position: center;
 }

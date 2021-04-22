@@ -43,7 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         creator: userID.toString(),
         description: description,
         author: author,
-        image: image,
+        image: image.startsWith("/") ? url + image : image,
         favicon: favicon,
       });
 

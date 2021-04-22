@@ -27,10 +27,11 @@ const Card = ({ data }) => {
         .cardWrapper {
           box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
           padding: 30px;
-          width: 300px;
           border-radius: 10px;
           background-color: #ffffff;
-          margin-bottom: 20px;
+          width: 250px;
+          height: 450px;
+          margin: 20px;
           position: relative;
         }
 
@@ -46,7 +47,7 @@ const Card = ({ data }) => {
         }
 
         .cardTitle {
-          font-size: 1.6rem;
+          font-size: 1.3rem;
           color: #325288;
 
           font-weight: bold;
@@ -57,11 +58,11 @@ const Card = ({ data }) => {
         }
         .cardButton {
           position: absolute;
-          right: -0.5px;
+          right: -1px;
           background-color: #325288;
           color: #f4f4f4;
           padding: 15px 20px;
-          bottom: -0.1px;
+          bottom: -1px;
           border-radius: 10px 0 10px 0;
         }
 

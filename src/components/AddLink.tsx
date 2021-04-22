@@ -45,7 +45,7 @@ const AddLink = () => {
         className={`my-2 px-4 ${styles.postButton}`}
         variant="primary"
       >
-        Post
+        Add
       </Button>
     </Form>
   );

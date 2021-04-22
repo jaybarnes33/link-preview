@@ -5,3 +5,9 @@
   display: flex;
   margin: auto;
 }
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
