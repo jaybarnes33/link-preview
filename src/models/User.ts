@@ -11,6 +11,9 @@ export interface IUserSchema extends Document {
 }
 
 const userSchema = new mongoose.Schema<IUserSchema>({
+  image: {
+    type: String,
+  },
   fName: {
     type: String,
     required: true,
