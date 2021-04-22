@@ -1,13 +1,11 @@
 import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
-import { getAccessToken } from "misc/token";
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 
 const Cards = () => {
   const [cards, setCards] = useState([]);
-  let token = getAccessToken();
 
   const { user } = useUser();
 
