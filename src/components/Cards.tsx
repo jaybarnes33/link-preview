@@ -3,6 +3,7 @@ import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import styles from "@/styles/cards.module.css";
+import Message from "./Message";
 
 const Cards = () => {
   const [cards, setCards] = useState([]);
@@ -23,7 +24,10 @@ const Cards = () => {
 
   return (
     <div className={styles.cardWrapper}>
-      {cards.map(card => (
+      {cards.length == 0 && (
+        <Message variant="success">No link previews to show</Message>
+      )}
+      {cards.map((card) => (
         <Card key={card._id} data={card} />
       ))}
     </div>

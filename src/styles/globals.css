@@ -18,8 +18,35 @@ h6 {
 header {
   position: fixed;
   top: 0;
+  box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
+.navbar-brand a {
+  color: white;
+  font-weight: bold;
+  font-size: 1.6rem;
+  letter-spacing: ;
+}
+
+.nav-item,
+.logout {
+  padding: 0 0.7rem;
+}
+
+.nav-item a,
+.logout {
+  color: #f4f4f4 !important;
+  font-size: 1.2rem;
+}
+
+.nav-item a:hover,
+.logout a:hover {
+  color: #f4f4f4;
+}
+a:hover {
+  text-decoration: none;
+}
 * {
   font-family: "Sen", sans-serif;
 }
