@@ -10,7 +10,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       await dbConnect();
 
-      const cards = await Card.find({}).populate("creator", "fname username");
+      const { limit = 10, page = 1 } = req.query as Record<string, string>;
+      const [parsedLimit, parsedPage] = [Number(limit), Number(page)];
+
+      const cards = await Card.find({})
+        .limit(parsedLimit)
+        .skip((parsedPage - 1) * parsedLimit)
+        .populate("creator", "fname username");
 
       res.status(200).json({ cards });
     } catch (error) {
@@ -44,7 +50,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         description: description,
         author: author,
         image: image.startsWith("/") ? url + image : image,
-        favicon: favicon.startsWith("/") ? url + favicon : favicon,
+        favicon: favicon.startsWith("/") ? url + favicon : favicon
       });
 
       await card.save();
