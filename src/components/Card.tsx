@@ -1,8 +1,23 @@
+import makeSecuredRequest from "@/utils/makeSecuredRequest";
+import { Button } from "react-bootstrap";
+
 const Card = ({ data }) => {
+  const handleDelete = async () => {
+    const response = await makeSecuredRequest(
+      `/api/cards/${data._id}`,
+      "DELETE"
+    );
+    console.log(response);
+    alert(response);
+  };
   return (
     <>
       <div className="cardContainer">
         <div className="cardWrapper">
+          <button className="deleteButton" onClick={handleDelete}>
+            {" "}
+            <i className="bi  bi-trash"></i>
+          </button>
           {data.image?.length > 3 && (
             <img className="cardImage" src={data.image} alt={data.title} />
           )}
@@ -22,13 +37,24 @@ const Card = ({ data }) => {
           place-items: center;
         }
 
+        .deleteButton {
+          position: absolute;
+          left: 0px;
+          top: 0;
+          background-color: #325288;
+          color: #f4f4f4;
+          border: none;
+          border-radius: 10px 0 10px 0;
+          padding: 10px 20px;
+        }
+
         .cardWrapper {
           box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
-          padding: 30px;
+          padding: 50px 30px;
           border-radius: 10px;
           background-color: #ffffff;
-          width: 250px;
-          height: 450px;
+          width: 280px;
+          height: 470px;
           margin: 20px;
           position: relative;
         }
@@ -40,7 +66,7 @@ const Card = ({ data }) => {
           height: 160px;
           object-fit: cover;
 
-          border: 1px solid #1597bb;
+          border: 1px solid #2978b5;
           padding: -5px;
           border-radius: 20px;
           margin-bottom: 10px;

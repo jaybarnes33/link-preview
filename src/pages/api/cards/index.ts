@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       await dbConnect();
 
-      const cards = await Card.find({}).populate("user", "name username");
+      const cards = await Card.find({}).populate("creator", "fname username");
 
       res.status(200).json({ cards });
     } catch (error) {

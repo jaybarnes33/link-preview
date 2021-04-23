@@ -12,7 +12,7 @@ h6 {
 .app {
   min-height: 100vh;
   padding: 10px 0;
-  background-color: #1597bb;
+  background-color: #2978b5;
 }
 
 header {
@@ -20,6 +20,8 @@ header {
   top: 0;
   box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
+  z-index: 2;
+  background-color: #2978b5e2;
 }
 
 .navbar-brand a {
@@ -48,7 +50,7 @@ a:hover {
   text-decoration: none;
 }
 * {
-  font-family: "Sen", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 @media screen and (max-width: 995px) {
@@ -61,6 +63,5 @@ a:hover {
     padding-top: 25vh;
     min-height: 100vh;
     text-align: center;
-    background-color: #1597bbee;
   }
 }
