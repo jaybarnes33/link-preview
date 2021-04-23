@@ -17,7 +17,26 @@ export default async (
 
       const user = await User.findById(userID);
 
-      res.json(user);
+      const {
+        username,
+        fName,
+        lName,
+        password,
+        email,
+        avatar,
+        country,
+      } = req.body;
+
+      user.username = username || user.username;
+      user.fName = fName || user.fName;
+      user.lName = lName || user.lName;
+      user.password = password || user.password;
+      user.email = email || user.email;
+      user.avatar = avatar || user.avatar;
+      user.country = country || user.country;
+
+      const updatedUser = await user.save();
+      res.status(201).json(updatedUser);
     } catch (error) {
       console.log(error);
       res.status(500).end("Something went wrong");
