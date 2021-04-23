@@ -9,7 +9,7 @@ const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
 const Cards = () => {
   const { user } = useUser();
-  const { data: cards, error } = useSWR(
+  const { data: cards, error, isValidating } = useSWR(
     `/api/cards/user/${user?._id}`,
     fetchCards
   ); // useSWR for caching and realtime mutations
@@ -22,7 +22,7 @@ const Cards = () => {
       {cards?.map(card => (
         <Card key={card._id} data={card} />
       ))}
-      {!cards && error && (
+      {!isValidating && error && (
         <Message variant="danger">Failed to fetch cards</Message>
       )}
     </div>
