@@ -22,6 +22,9 @@ const Cards = () => {
       {cards?.map(card => (
         <Card key={card._id} data={card} />
       ))}
+      {!cards && error && (
+        <Message variant="danger">Failed to fetch cards</Message>
+      )}
     </div>
   );
 };
