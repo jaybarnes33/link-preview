@@ -3,8 +3,19 @@
   justify-content: center;
 }
 
+.form {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-color: #2978b5e2;
+  height: 100vh;
+}
+
 .buttons button {
-  margin: 0 10px;
+  margin-right: 10px;
 }
 .previewButton {
   background-color: #8ab6d6 !important;

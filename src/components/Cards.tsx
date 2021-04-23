@@ -14,7 +14,7 @@ const Cards = () => {
 
   const { user } = useUser();
   const { data, error, isValidating } = useSWR(
-    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=2`,
+    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=6`,
     fetchCards
   ); // useSWR for caching and realtime mutations
 
@@ -27,7 +27,7 @@ const Cards = () => {
         {data?.cards?.length === 0 && (
           <Message variant="success">No link previews to show</Message>
         )}
-        {data?.cards?.map(card => (
+        {data?.cards?.map((card) => (
           <Card key={card._id} data={card} />
         ))}
         {!isValidating && error && (

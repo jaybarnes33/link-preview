@@ -32,7 +32,7 @@ export default async function handler(
       const lastCard = cards[cards.length - 1];
 
       const indexOfCursor = allCards.findIndex(
-        value => value._id.toString() === lastCard._id.toString()
+        (value) => value._id.toString() === lastCard._id.toString()
       );
 
       const hasMore = indexOfCursor + 1 < allCards.length;

@@ -20,7 +20,7 @@ header {
   top: 0;
   box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
-  z-index: 2;
+  z-index: 3;
   background-color: #2978b5e2;
 }
 
