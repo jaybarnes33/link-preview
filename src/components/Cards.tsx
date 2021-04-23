@@ -18,8 +18,7 @@ const Cards = () => {
     fetchCards
   ); // useSWR for caching and realtime mutations
 
-  const nextPage = () =>
-    data?.totalCount < data?.cards.length && setPageIndex(pageIndex + 1);
+  const nextPage = () => data?.hasMore && setPageIndex(pageIndex + 1);
   const prevPage = () => pageIndex > 1 && setPageIndex(pageIndex - 1);
 
   return (
