@@ -12,23 +12,32 @@ const AddLink = () => {
   const [loading, setLoading] = useState(false);
   const [isDone, setisDone] = useState(false);
   const [data, setData] = useState({});
+  const [cancel, setCancel] = useState({});
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setLoading(true);
+      if (!cancel) {
+        const data = await makeSecuredRequest("/api/cards/", "POST", {
+          url: link,
+        });
 
-      const data = await makeSecuredRequest("/api/cards/", "POST", {
-        url: link,
-      });
-
-      setData(data);
-      console.log(data);
-      setLoading(false);
-      setisDone(true);
+        setData(data);
+        console.log(data);
+        setLoading(false);
+        setisDone(true);
+      }
     } catch (error) {
       setLoading(false);
       setMessage(error.message);
     }
+  };
+
+  const handleClear = () => {
+    setLink("");
+    setLoading(false);
+    setisDone(false);
+    setCancel(true);
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -42,13 +51,17 @@ const AddLink = () => {
         placeholder="Enter a link to preview"
         onChange={(e) => setLink(e.target.value)}
       />
-      <Button
-        type="submit"
-        className={`my-2 px-4 ${styles.postButton}`}
-        variant="primary"
-      >
-        Add
-      </Button>
+      <div className={styles.buttons}>
+        <Button
+          onClick={handleSubmit}
+          className={`my-2 px-4 ${styles.previewButton}`}
+        >
+          Generate link Preview
+        </Button>
+        <Button onClick={handleClear} className={`my-2 px-4 `} variant="light">
+          Cancel
+        </Button>
+      </div>
     </Form>
   );
 };

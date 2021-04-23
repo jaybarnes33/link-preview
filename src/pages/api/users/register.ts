@@ -23,7 +23,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         });
 
         await user.save();
-        res.status(201).json(user);
+        res
+          .status(201)
+          .json({
+            fName: user.Fname,
+            lName: user.Lname,
+            email: user.email,
+            username: user.username,
+            country: user.country,
+          });
       } else {
         res.status(403).json({ error: "User already exists" });
       }

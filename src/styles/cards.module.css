@@ -1,9 +1,15 @@
-.postButton {
+.buttons {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.buttons button {
+  margin: 0 10px;
+}
+.previewButton {
   background-color: #8ab6d6 !important;
 
   border: none;
-  display: flex;
-  margin: auto;
 }
 
 .input {

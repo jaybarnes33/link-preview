@@ -5,6 +5,7 @@ import AddLink from "@/components/AddLink";
 import Router from "next/router";
 import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
+import Head from "next/head";
 const dashboard = () => {
   const { isAuthenticated, authenticating } = useUser();
   const [loading, setLoading] = useState(false);
@@ -16,6 +17,9 @@ const dashboard = () => {
   }, [isAuthenticated, authenticating]); // add authenticating to dependencies
   return (
     <Layout>
+      <Head>
+        <title>Preview your links</title>
+      </Head>
       <div className={styles.wrapper}>
         <AddLink />
         <Cards />

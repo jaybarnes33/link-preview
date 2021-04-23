@@ -8,7 +8,7 @@ import Message from "./Message";
 const Cards = () => {
   const [cards, setCards] = useState([]);
 
-  const { user } = useUser();
+  const { user, isAuthenticated, authenticating } = useUser();
 
   const fetchCards = async () => {
     const data = await makeSecuredRequest(`/api/cards/user/${user._id}`, "GET");
@@ -19,7 +19,7 @@ const Cards = () => {
   // Then runs again if any of it's dependencies changes (componentDidUpdate)
 
   useEffect(() => {
-    user && fetchCards(); // Therefore only run the fetchCards() when `user` has been updated to avoid errors
+    !authenticating && user && fetchCards(); // Therefore only run the fetchCards() when `user` has been updated to avoid errors
   }, [fetchCards, cards, user]);
 
   return (
