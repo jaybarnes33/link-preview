@@ -5,15 +5,16 @@ import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
-const Cards = () => {
+const Cards = ({ navs }) => {
   const [pageIndex, setPageIndex] = useState(1);
 
   const { user } = useUser();
   const { data, error, isValidating } = useSWR(
-    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=6`,
+    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=10`,
     fetchCards
   ); // useSWR for caching and realtime mutations
 
@@ -33,14 +34,22 @@ const Cards = () => {
           <Message variant="danger">Failed to fetch cards</Message>
         )}
       </div>
-      {data?.cards.length > 0 && (
+      {data?.cards.length > 0 && navs != false && (
         <div className="pagination-buttons">
-          <button className={styles.paginationbtn} onClick={prevPage}>
+          <Button
+            variant="light"
+            className={styles.paginationbtn}
+            onClick={prevPage}
+          >
             <i className="bi bi-chevron-left"></i>
-          </button>
-          <button className={styles.paginationbtn} onClick={nextPage}>
+          </Button>
+          <Button
+            variant="light"
+            className={styles.paginationbtn}
+            onClick={nextPage}
+          >
             <i className="bi bi-chevron-right"></i>
-          </button>
+          </Button>
         </div>
       )}
       <style>{`

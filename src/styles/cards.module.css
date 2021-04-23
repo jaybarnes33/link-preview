@@ -3,19 +3,29 @@
   justify-content: center;
 }
 
-.form {
+.formContainer {
   position: fixed;
   z-index: 2;
   top: 0;
+  display: grid;
   width: 100%;
   place-items: center;
-  background-color: #2978b5e2;
+
   height: 100vh;
 }
 
+.form {
+  background-color: #fffff2ee;
+  padding: 30px;
+}
+.addLink {
+  position: absolute;
+  right: 20px;
+  top: 90px;
+}
 .heading {
   font-size: 1.4rem;
-  color: white;
+  color: #101011;
   font-weight: bold;
 }
 

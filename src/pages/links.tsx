@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "@/styles/dashboard.module.css";
-import AddLink from "@/components/AddLink";
 import Router from "next/router";
 import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
@@ -19,8 +18,7 @@ const links = () => {
   return (
     <Layout>
       <div className={styles.wrapper}>
-        <AddLink />
-        <Cards />
+        <Cards navs={true} />
       </div>
     </Layout>
   );
