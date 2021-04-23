@@ -42,8 +42,7 @@ header {
 }
 
 .nav-item a,
-.logout,
-.addlink {
+.logout a {
   color: #f4f4f4 !important;
   font-size: 1.2rem;
 }
@@ -54,7 +53,7 @@ header {
 
 .nav-item a:hover,
 .logout a:hover,
-.addlink a:hover {
+a:hover {
   color: #f4f4f4;
 }
 a:hover {
@@ -74,12 +73,12 @@ a:hover {
     right: 0;
     z-index: 2;
     min-height: 100vh;
-    text-align: center;
+    text-align: left;
     color: black !important;
     padding: 25vh 0;
     font-size: 1.5rem !important;
     width: 400px;
-    background-color: #2978b5ee;
+    background-color: #f4f4f4ee;
   }
 
   nav {
@@ -95,5 +94,12 @@ a:hover {
   .navbar-collapse {
     width: 250px;
     padding: 15vh 0;
+    background-color: #f4f4f4ee;
+  }
+
+  .nav-item a,
+  .logout a {
+    color: #101010 !important;
+    font-size: 1.4rem;
   }
 }
