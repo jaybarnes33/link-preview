@@ -55,7 +55,7 @@ const Card = ({ data }) => {
           background-color: #ffffff;
           width: 280px;
           height: 470px;
-          margin: 20px;
+          margin: 0 20px;
           position: relative;
         }
 

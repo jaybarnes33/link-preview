@@ -8,10 +8,15 @@
   z-index: 2;
   top: 0;
   width: 100%;
-  display: grid;
   place-items: center;
   background-color: #2978b5e2;
   height: 100vh;
+}
+
+.heading {
+  font-size: 1.4rem;
+  color: white;
+  font-weight: bold;
 }
 
 .buttons button {

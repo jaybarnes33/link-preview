@@ -24,6 +24,10 @@ header {
   background-color: #2978b5e2;
 }
 
+.show {
+  display: grid !important;
+}
+
 .navbar-brand a {
   color: white;
   font-weight: bold;

@@ -18,6 +18,15 @@ const Header = () => {
   const handleClick = () => {
     setClicked(!clicked);
   };
+
+  const handleShow = () => {
+    const form = document.getElementById("form");
+
+    console.log(form);
+    form.classList.contains("show")
+      ? form.classList.remove("show")
+      : form.classList.add("show");
+  };
   return (
     <header>
       <Navbar expand="lg" collapseOnSelect>
@@ -78,6 +87,15 @@ const Header = () => {
                   <Nav.Item>
                     <Nav.Link className="logout" onClick={handleLogout}>
                       Logout
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link
+                      as={Button}
+                      variant="warning"
+                      onClick={handleShow}
+                    >
+                      Post a link
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>

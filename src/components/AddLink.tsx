@@ -36,9 +36,12 @@ const AddLink = () => {
     setLink("");
     setLoading(false);
     setisDone(false);
+    const form = document.getElementById("form");
+    form.classList.remove("show");
   };
   return (
-    <div className={styles.form}>
+    <div className={styles.form} style={{ display: "none" }} id="form">
+      <h1 className={styles.heading}>Post a Link</h1>
       <Form onSubmit={handleSubmit}>
         {loading && <Loader />}
         {message && <Message variant="danger" children={message} />}

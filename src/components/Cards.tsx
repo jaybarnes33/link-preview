@@ -34,10 +34,13 @@ const Cards = () => {
           <Message variant="danger">Failed to fetch cards</Message>
         )}
       </div>
-      <div className="pagination-buttons">
-        <Button onClick={prevPage}>Prev Page</Button>
-        <Button onClick={nextPage}>Next Page</Button>
-      </div>
+      {data?.cards.length > 0 && (
+        <div className="pagination-buttons">
+          <Button onClick={prevPage}>Prev Page</Button>
+          <Button onClick={nextPage}>Next Page</Button>
+        </div>
+      )}
+
       <style>{`
       .pagination-buttons {
         margin: 16px 0;
