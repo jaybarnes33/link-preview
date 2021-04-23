@@ -61,11 +61,11 @@ const AddLink = () => {
       </Button>
 
       {show && (
-        <div className={styles.form}>
-          <h1 className={styles.heading}>Post a Link</h1>
-          <Form onSubmit={handleSubmit}>
+        <div>
+          <Form className={styles.form} onSubmit={handleSubmit}>
             {loading && <Loader />}
             {message && <Message variant="danger" children={message} />}
+            <h1 className={styles.heading}>Post a Link</h1>
             {isDone && !loading && <Card data={data} />}
             <Form.Control
               id="input"

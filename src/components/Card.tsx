@@ -35,6 +35,8 @@ const Card = ({ data }) => {
         .cardContainer {
           display: flex;
           justify-content: center;
+          position: relative;
+          z-index: 3;
         }
 
         .deleteButton {

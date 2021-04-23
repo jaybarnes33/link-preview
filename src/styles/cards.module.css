@@ -10,14 +10,15 @@
   display: grid;
   width: 100%;
   place-items: center;
-
   height: 100vh;
+  z-index: 2;
 }
 
 .form {
+  width: 99%;
+  margin: 0 0.5%;
   position: relative;
-  z-index: 2;
-  background-color: #fffff2ee;
+  background-color: #ffffff;
   padding: 30px;
 }
 .addLink {
@@ -45,16 +46,22 @@
 }
 
 .cardsWrapper {
+  padding-top: 30px;
   margin-top: -15vh;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
+}
+
+.cardsWrapper .card {
+  z-index: 1 !important;
 }
 
 @media (min-width: 340px) and (max-width: 500px) {
   .input {
-    width: 320px;
+    width: 100%;
   }
 }
 
