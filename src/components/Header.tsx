@@ -23,7 +23,7 @@ const Header = () => {
     const form = document.getElementById("form");
 
     console.log(form);
-    form.classList.contains("show")
+    form?.classList.contains("show")
       ? form.classList.remove("show")
       : form.classList.add("show");
   };
@@ -90,11 +90,7 @@ const Header = () => {
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link
-                      as={Button}
-                      variant="warning"
-                      onClick={handleShow}
-                    >
+                    <Nav.Link className="addlink" onClick={handleShow}>
                       Post a link
                     </Nav.Link>
                   </Nav.Item>

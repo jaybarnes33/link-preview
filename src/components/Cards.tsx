@@ -23,7 +23,7 @@ const Cards = () => {
 
   return (
     <>
-      <div className={styles.cardWrapper}>
+      <div className={styles.cardsWrapper}>
         {data?.cards?.length === 0 && (
           <Message variant="success">No link previews to show</Message>
         )}
@@ -33,18 +33,22 @@ const Cards = () => {
         {!isValidating && error && (
           <Message variant="danger">Failed to fetch cards</Message>
         )}
+        {data?.cards.length > 0 && (
+          <div className="pagination-buttons">
+            <Button onClick={prevPage}>Prev Page</Button>
+            <Button onClick={nextPage}>Next Page</Button>
+          </div>
+        )}
       </div>
-      {data?.cards.length > 0 && (
-        <div className="pagination-buttons">
-          <Button onClick={prevPage}>Prev Page</Button>
-          <Button onClick={nextPage}>Next Page</Button>
-        </div>
-      )}
 
       <style>{`
       .pagination-buttons {
+        position: fixed;
+        width: 100%;
+        bottom: 20px;
         margin: 16px 0;
         display: flex;
+        justify-content: center;
         gap: 16px;
       }
       `}</style>

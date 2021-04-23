@@ -33,8 +33,8 @@ const Card = ({ data }) => {
       </div>
       <style jsx>{`
         .cardContainer {
-          display: grid;
-          place-items: center;
+          display: flex;
+          justify-content: center;
         }
 
         .deleteButton {
@@ -55,7 +55,7 @@ const Card = ({ data }) => {
           background-color: #ffffff;
           width: 280px;
           height: 470px;
-          margin: 0 20px;
+          margin: 20px;
           position: relative;
         }
 

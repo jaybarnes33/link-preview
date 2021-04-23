@@ -19,6 +19,7 @@ const links = () => {
   return (
     <Layout>
       <div className={styles.wrapper}>
+        <AddLink />
         <Cards />
       </div>
     </Layout>

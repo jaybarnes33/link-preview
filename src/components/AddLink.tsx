@@ -37,7 +37,7 @@ const AddLink = () => {
     setLoading(false);
     setisDone(false);
     const form = document.getElementById("form");
-    form.classList.remove("show");
+    form?.classList.remove("show");
   };
   return (
     <div className={styles.form} style={{ display: "none" }} id="form">

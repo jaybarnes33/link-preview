@@ -36,18 +36,21 @@ header {
 }
 
 .nav-item,
-.logout {
+.logout,
+.addlink {
   padding: 0 0.7rem;
 }
 
 .nav-item a,
-.logout {
+.logout,
+.addlink {
   color: #f4f4f4 !important;
   font-size: 1.2rem;
 }
 
 .nav-item a:hover,
-.logout a:hover {
+.logout a:hover,
+.addlink a:hover {
   color: #f4f4f4;
 }
 a:hover {
@@ -64,8 +67,10 @@ a:hover {
   }
 
   .navbar-collapse {
-    padding-top: 25vh;
-    min-height: 100vh;
+    margin-right: 0 !important;
+    display: grid;
+    place-items: center;
+    min-height: 90vh;
     text-align: center;
   }
 }
