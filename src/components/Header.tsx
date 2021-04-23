@@ -22,7 +22,6 @@ const Header = () => {
   const handleShow = () => {
     const form = document.getElementById("form");
 
-    console.log(form);
     form?.classList.contains("show")
       ? form.classList.remove("show")
       : form.classList.add("show");

@@ -5,6 +5,7 @@ import { Form, Button } from "react-bootstrap";
 import Card from "./Card";
 import Loader from "./Loader";
 import Message from "./Message";
+import scrapeData from "@/utils/scrapeData";
 
 const AddLink = () => {
   const [link, setLink] = useState("");
@@ -13,6 +14,10 @@ const AddLink = () => {
   const [isDone, setisDone] = useState(false);
   const [data, setData] = useState({});
 
+  const showPreview = async () => {
+    const preview = await scrapeData(link);
+    console.log(preview);
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -26,6 +31,7 @@ const AddLink = () => {
       console.log(data);
       setLoading(false);
       setisDone(true);
+      setLink("");
     } catch (error) {
       setLoading(false);
       setMessage(error.message);
@@ -47,6 +53,7 @@ const AddLink = () => {
         {message && <Message variant="danger" children={message} />}
         {isDone && !loading && <Card data={data} />}
         <Form.Control
+          id="input"
           className={styles.input}
           type="url"
           value={link}
@@ -58,7 +65,7 @@ const AddLink = () => {
             onClick={handleSubmit}
             className={`my-2 px-4 ${styles.previewButton}`}
           >
-            Generate link Preview
+            Get link Preview
           </Button>
           <Button
             onClick={handleClear}

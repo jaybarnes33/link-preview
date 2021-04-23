@@ -5,7 +5,6 @@ import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
@@ -36,17 +35,24 @@ const Cards = () => {
       </div>
       {data?.cards.length > 0 && (
         <div className="pagination-buttons">
-          <Button onClick={prevPage}>Prev Page</Button>
-          <Button onClick={nextPage}>Next Page</Button>
+          <button className={styles.paginationbtn} onClick={prevPage}>
+            <i className="bi bi-chevron-left"></i>
+          </button>
+          <button className={styles.paginationbtn} onClick={nextPage}>
+            <i className="bi bi-chevron-right"></i>
+          </button>
         </div>
       )}
       <style>{`
       .pagination-buttons {
         position: relative;
-        z-index: 2;
         margin: 16px 0;
         display: inline-flex;
-       gap: 16px;
+        gap: 16px;
+      }
+
+      .pagination-buttons button {
+        z-index:2;
       }
       `}</style>
     </>

@@ -11,7 +11,7 @@ h6 {
 } */
 .app {
   min-height: 100vh;
-  padding: 10px 0;
+  padding: 5vh 0;
   background-color: #2978b5;
 }
 
@@ -75,11 +75,11 @@ a:hover {
     padding: 25vh 0;
     font-size: 1.5rem !important;
     width: 400px;
-    background-color: #1e212da1;
+    background-color: #2978b5ee;
   }
 
   nav {
-    background-color: #1e212da1;
+    background-color: #2978b5;
   }
 
   .nav-item {

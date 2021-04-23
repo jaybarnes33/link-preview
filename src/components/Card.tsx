@@ -39,9 +39,9 @@ const Card = ({ data }) => {
 
         .deleteButton {
           position: absolute;
-          left: 0px;
-          top: 0;
-          background-color: #325288;
+          left: -3px;
+          top: -1px;
+          background-color: #2978b5;
           color: #f4f4f4;
           border: none;
           border-radius: 10px 0 10px 0;
@@ -67,14 +67,14 @@ const Card = ({ data }) => {
           object-fit: cover;
 
           border: 1px solid #2978b5;
-          padding: -5px;
+          padding: 5px;
           border-radius: 20px;
           margin-bottom: 10px;
         }
 
         .cardTitle {
           font-size: 1.3rem;
-          color: #325288;
+          color: #2978b5;
 
           font-weight: bold;
         }
@@ -85,7 +85,7 @@ const Card = ({ data }) => {
         .cardButton {
           position: absolute;
           right: -1px;
-          background-color: #325288;
+          background-color: #2978b5;
           color: #f4f4f4;
           padding: 15px 20px;
           bottom: -1px;
