@@ -1,33 +1,25 @@
+import useSWR from "swr";
 import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
-import { useEffect, useState } from "react";
 import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
 
+const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
+
 const Cards = () => {
-  const [cards, setCards] = useState([]);
-
   const { user } = useUser();
-
-  const fetchCards = async () => {
-    const data = await makeSecuredRequest(`/api/cards/user/${user._id}`, "GET");
-    setCards(data);
-  };
-
-  // The useEffect hook runs once after component has been rendered (componentDidMount)
-  // Then runs again if any of it's dependencies changes (componentDidUpdate)
-
-  useEffect(() => {
-    user && fetchCards(); // Therefore only run the fetchCards() when `user` has been updated to avoid errors
-  }, [fetchCards, cards, user]);
+  const { data: cards, error } = useSWR(
+    `/api/cards/user/${user?._id}`,
+    fetchCards
+  ); // useSWR for caching and realtime mutations
 
   return (
     <div className={styles.cardWrapper}>
-      {cards.length == 0 && (
+      {cards?.length === 0 && (
         <Message variant="success">No link previews to show</Message>
       )}
-      {cards.map((card) => (
+      {cards?.map(card => (
         <Card key={card._id} data={card} />
       ))}
     </div>
