@@ -60,17 +60,36 @@ a:hover {
   font-family: "Ubuntu", sans-serif;
 }
 
+.navbar-toggler {
+  z-index: 4;
+}
 @media screen and (max-width: 995px) {
-  .nav-item {
-    padding: 10px;
-    font-size: 1.5rem;
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    min-height: 100vh;
+    text-align: center;
+    color: black !important;
+    padding: 25vh 0;
+    font-size: 1.5rem !important;
+    width: 400px;
+    background-color: #1e212da1;
   }
 
+  nav {
+    background-color: #1e212da1;
+  }
+
+  .nav-item {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 270px) and (max-width: 400px) {
   .navbar-collapse {
-    margin-right: 0 !important;
-    display: grid;
-    place-items: center;
-    min-height: 90vh;
-    text-align: center;
+    width: 250px;
+    padding: 15vh 0;
   }
 }

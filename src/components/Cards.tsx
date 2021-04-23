@@ -33,23 +33,20 @@ const Cards = () => {
         {!isValidating && error && (
           <Message variant="danger">Failed to fetch cards</Message>
         )}
-        {data?.cards.length > 0 && (
-          <div className="pagination-buttons">
-            <Button onClick={prevPage}>Prev Page</Button>
-            <Button onClick={nextPage}>Next Page</Button>
-          </div>
-        )}
       </div>
-
+      {data?.cards.length > 0 && (
+        <div className="pagination-buttons">
+          <Button onClick={prevPage}>Prev Page</Button>
+          <Button onClick={nextPage}>Next Page</Button>
+        </div>
+      )}
       <style>{`
       .pagination-buttons {
-        position: fixed;
-        width: 100%;
-        bottom: 20px;
+        position: relative;
+        z-index: 2;
         margin: 16px 0;
-        display: flex;
-        justify-content: center;
-        gap: 16px;
+        display: inline-flex;
+       gap: 16px;
       }
       `}</style>
     </>
