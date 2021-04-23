@@ -1,36 +1,51 @@
+import useSWR from "swr";
 import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
-import { useEffect, useState } from "react";
 import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
+
+const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
 const Cards = () => {
-  const [cards, setCards] = useState([]);
+  const [pageIndex, setPageIndex] = useState(1);
 
-  const { user, isAuthenticated, authenticating } = useUser();
+  const { user } = useUser();
+  const { data, error, isValidating } = useSWR(
+    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=2`,
+    fetchCards
+  ); // useSWR for caching and realtime mutations
 
-  const fetchCards = async () => {
-    const data = await makeSecuredRequest(`/api/cards/user/${user._id}`, "GET");
-    setCards(data);
-  };
-
-  // The useEffect hook runs once after component has been rendered (componentDidMount)
-  // Then runs again if any of it's dependencies changes (componentDidUpdate)
-
-  useEffect(() => {
-    !authenticating && user && fetchCards(); // Therefore only run the fetchCards() when `user` has been updated to avoid errors
-  }, [fetchCards, cards, user]);
+  const nextPage = () => data?.hasMore && setPageIndex(pageIndex + 1);
+  const prevPage = () => pageIndex > 1 && setPageIndex(pageIndex - 1);
 
   return (
-    <div className={styles.cardWrapper}>
-      {cards.length == 0 && (
-        <Message variant="success">No link previews to show</Message>
-      )}
-      {cards.map((card) => (
-        <Card key={card._id} data={card} />
-      ))}
-    </div>
+    <>
+      <div className={styles.cardWrapper}>
+        {data?.cards?.length === 0 && (
+          <Message variant="success">No link previews to show</Message>
+        )}
+        {data?.cards?.map(card => (
+          <Card key={card._id} data={card} />
+        ))}
+        {!isValidating && error && (
+          <Message variant="danger">Failed to fetch cards</Message>
+        )}
+      </div>
+      <div className="pagination-buttons">
+        <Button onClick={prevPage}>Prev Page</Button>
+        <Button onClick={nextPage}>Next Page</Button>
+      </div>
+      <style>{`
+      .pagination-buttons {
+        margin: 16px 0;
+        display: flex;
+        gap: 16px;
+      }
+      `}</style>
+    </>
   );
 };
 
