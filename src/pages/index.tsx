@@ -29,10 +29,14 @@ export default function Home() {
         <div>
           <p className={styles.hero}> Save all your links</p>
           <Link href="/login">
-            <Button className={`mr-2 ${styles.login}`}>Login</Button>
+            <Button variant="warning" className={`mr-2 `}>
+              Login
+            </Button>
           </Link>
           <Link href="/register">
-            <Button className={`mr-2 ${styles.register}`}>Register</Button>
+            <Button variant="warning" className={`mr-2 `}>
+              Register
+            </Button>
           </Link>
         </div>
       </main>

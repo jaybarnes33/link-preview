@@ -111,7 +111,7 @@ const Login = () => {
             />
           </Form.Group>
         </div>
-        <Button type="submit" variant="primary" className="my-2 px-5">
+        <Button type="submit" variant="warning" className="my-2 px-5">
           Log in
         </Button>
         <div className={styles.small}>

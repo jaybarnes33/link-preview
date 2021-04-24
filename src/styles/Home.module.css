@@ -11,7 +11,6 @@
 }
 
 .main button {
-  background-color: #8ab6d6 !important;
   border: none;
 }
 
@@ -19,9 +18,4 @@
   padding: 20px 40px;
   background-color: beige;
   border-radius: 5px;
-}
-
-.main button:hover {
-  background-color: whitesmoke !important;
-  color: #101010;
 }

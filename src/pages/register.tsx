@@ -145,7 +145,7 @@ const Register = () => {
             ))}
           </Form.Control>
         </div>
-        <Button type="submit" variant="primary" className="my-2 px-5">
+        <Button type="submit" variant="warning" className="my-2 px-5">
           Sign Up
         </Button>
         <div className={styles.small}>
