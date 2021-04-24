@@ -67,7 +67,7 @@ a:hover {
   z-index: 4;
 }
 @media screen and (max-width: 995px) {
-  .navbar-collapse {
+  /* .navbar-collapse {
     position: fixed;
     top: 0;
     right: 0;
@@ -79,7 +79,7 @@ a:hover {
     font-size: 1.5rem !important;
     width: 400px;
     background-color: #f4f4f4ee;
-  }
+  } */
 
   nav {
     background-color: #2978b5;
@@ -91,15 +91,15 @@ a:hover {
 }
 
 @media (min-width: 270px) and (max-width: 400px) {
-  .navbar-collapse {
+  /* .navbar-collapse {
     width: 250px;
     padding: 15vh 0;
     background-color: #f4f4f4ee;
-  }
-
+  } */
+  /* 
   .nav-item a,
   .logout a {
     color: #101010 !important;
     font-size: 1.4rem;
-  }
+  } */
 }
