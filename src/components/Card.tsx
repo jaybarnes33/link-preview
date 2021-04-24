@@ -1,8 +1,10 @@
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import Router from "next/router";
-import { Button } from "react-bootstrap";
+import { useState } from "react";
 
 const Card = ({ data }) => {
+  const [done, setDone] = useState(false);
+
   const handleDelete = async () => {
     try {
       const response = await makeSecuredRequest(
@@ -11,6 +13,8 @@ const Card = ({ data }) => {
       );
 
       alert(response);
+      setDone(true);
+      Router.replace("/");
     } catch (error) {
       console.error(error.message);
     }

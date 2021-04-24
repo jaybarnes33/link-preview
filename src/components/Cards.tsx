@@ -39,13 +39,16 @@ const Cards = ({ navs }) => {
       </div>
       {data?.cards.length > 0 && navs != false && (
         <div className="pagination-buttons">
-          <Button
-            variant="light"
-            className={styles.paginationbtn}
-            onClick={prevPage}
-          >
-            <i className="bi bi-chevron-left"></i>
-          </Button>
+          {pageIndex != 1 && (
+            <Button
+              variant="light"
+              className={styles.paginationbtn}
+              onClick={prevPage}
+            >
+              <i className="bi bi-chevron-left"></i>
+            </Button>
+          )}
+
           {data?.hasMore && (
             <Button
               variant="light"
