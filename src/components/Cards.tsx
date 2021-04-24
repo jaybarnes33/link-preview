@@ -14,15 +14,9 @@ const Cards = ({ navs }) => {
 
   const { user } = useUser();
   const { data, error, isValidating } = useSWR(
-    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=50`,
+    `/api/cards/user/${user?._id}`,
     fetchCards
   ); // useSWR for caching and realtime mutations
-  const nextPage = () => data?.hasMore && setPageIndex(pageIndex + 1);
-  const prevPage = () => pageIndex > 1 && setPageIndex(pageIndex - 1);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [nextPage, prevPage]);
 
   return (
     <>
@@ -37,29 +31,7 @@ const Cards = ({ navs }) => {
           <Message variant="danger">Failed to fetch cards</Message>
         )}
       </div>
-      {data?.cards.length > 0 && navs != false && (
-        <div className="pagination-buttons">
-          {pageIndex != 1 && (
-            <Button
-              variant="light"
-              className={styles.paginationbtn}
-              onClick={prevPage}
-            >
-              <i className="bi bi-chevron-left"></i>
-            </Button>
-          )}
 
-          {data?.hasMore && (
-            <Button
-              variant="light"
-              className={styles.paginationbtn}
-              onClick={nextPage}
-            >
-              <i className="bi bi-chevron-right"></i>
-            </Button>
-          )}
-        </div>
-      )}
       <style>{`
       .pagination-buttons {
         position: relative;
