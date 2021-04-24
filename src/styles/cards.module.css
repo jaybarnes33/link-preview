@@ -69,4 +69,8 @@
   .input {
     width: 600px;
   }
+
+  .cardsWrapper {
+    padding-top: 60px;
+  }
 }
