@@ -8,7 +8,7 @@ async function dbConnect() {
   return mongoose.connect(
     process.env.NODE_ENV === "production"
       ? process.env.ATLAS_URI
-      : process.env.MONGO_URI,
+      : process.env.ATLAS_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

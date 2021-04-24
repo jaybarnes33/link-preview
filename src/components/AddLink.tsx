@@ -56,7 +56,7 @@ const AddLink = () => {
   };
   return (
     <section className={styles.formContainer}>
-      <Button variant="light" className={styles.addLink} onClick={handleShow}>
+      <Button variant="warning" className={styles.addLink} onClick={handleShow}>
         Post a link
       </Button>
 
@@ -78,14 +78,15 @@ const AddLink = () => {
             <div className={styles.buttons}>
               <Button
                 onClick={handleSubmit}
-                className={`my-2 px-4 ${styles.previewButton}`}
+                variant="warning"
+                className={`my-2 `}
               >
-                Create Preview
+                Preview
               </Button>
               <Button
                 onClick={handleClear}
-                className={`my-2 px-4 `}
-                variant="light"
+                className={`my-2 `}
+                variant="outline-dark"
               >
                 Cancel
               </Button>

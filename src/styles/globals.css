@@ -12,7 +12,7 @@ h6 {
 .app {
   min-height: 100vh;
   padding: 5vh 0;
-  background-color: #2978b5;
+  background-color: #101010;
 }
 
 header {
@@ -21,7 +21,7 @@ header {
   box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
   z-index: 3;
-  background-color: #2978b5e2;
+  background-color: #101010e2;
 }
 
 .show {
@@ -82,7 +82,7 @@ a:hover {
   } */
 
   nav {
-    background-color: #2978b5;
+    background-color: #101010;
   }
 
   .nav-item {

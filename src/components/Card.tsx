@@ -14,7 +14,10 @@ const Card = ({ data }) => {
     <>
       <div className="cardContainer">
         <div className="cardWrapper">
-          <button className="deleteButton" onClick={handleDelete}>
+          <button
+            className="deleteButton btn btn-warning"
+            onClick={handleDelete}
+          >
             {" "}
             <i className="bi  bi-trash"></i>
           </button>
@@ -25,7 +28,7 @@ const Card = ({ data }) => {
             <h1 className="cardTitle">{data.title}</h1>
             {data.description && <p>{data.description.substring(0, 91)} ...</p>}
 
-            <a className="cardButton" href={data.link}>
+            <a className="cardButton btn btn-warning" href={data.link}>
               <i className="bi bi-chevron-right"></i>
             </a>
           </div>
@@ -43,8 +46,7 @@ const Card = ({ data }) => {
           position: absolute;
           left: -3px;
           top: -1px;
-          background-color: #2978b5;
-          color: #f4f4f4;
+
           border: none;
           border-radius: 10px 0 10px 0;
           padding: 10px 20px;
@@ -87,8 +89,7 @@ const Card = ({ data }) => {
         .cardButton {
           position: absolute;
           right: -1px;
-          background-color: #2978b5;
-          color: #f4f4f4;
+
           padding: 15px 20px;
           bottom: -1px;
           border-radius: 10px 0 10px 0;
