@@ -81,7 +81,7 @@ const AddLink = () => {
                 variant="warning"
                 className={`my-2 `}
               >
-                Preview
+                Post
               </Button>
               <Button
                 onClick={handleClear}

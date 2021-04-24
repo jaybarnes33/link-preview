@@ -28,7 +28,12 @@ const Card = ({ data }) => {
             <h1 className="cardTitle">{data.title}</h1>
             {data.description && <p>{data.description.substring(0, 91)} ...</p>}
 
-            <a className="cardButton btn btn-warning" href={data.link}>
+            <a
+              className="cardButton btn btn-warning"
+              href={data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="bi bi-chevron-right"></i>
             </a>
           </div>
