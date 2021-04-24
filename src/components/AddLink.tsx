@@ -80,7 +80,7 @@ const AddLink = () => {
                 onClick={handleSubmit}
                 className={`my-2 px-4 ${styles.previewButton}`}
               >
-                Get link Preview
+                Create Preview
               </Button>
               <Button
                 onClick={handleClear}
