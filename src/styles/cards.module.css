@@ -3,26 +3,31 @@
   justify-content: center;
 }
 
-.formContainer {
-  position: fixed;
-
+.section {
+  position: absolute;
   top: 0;
-  display: grid;
+
   width: 100%;
-  place-items: center;
-  height: 100vh;
-  z-index: 2;
+  z-index: 3;
 }
 
+.formContainer {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 35vh;
+  width: 100%;
+}
 .form {
   width: 99%;
   margin: 0 0.5%;
   position: relative;
   background-color: #ffffff;
   padding: 30px;
+  z-index: 3;
 }
 .addLink {
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 90px;
 }

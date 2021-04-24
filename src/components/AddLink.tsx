@@ -55,13 +55,13 @@ const AddLink = () => {
     setLink(value);
   };
   return (
-    <section className={styles.formContainer}>
+    <section className={styles.section}>
       <Button variant="warning" className={styles.addLink} onClick={handleShow}>
         Post a link
       </Button>
 
       {show && (
-        <div>
+        <div className={styles.formContainer}>
           <Form className={styles.form} onSubmit={handleSubmit}>
             {loading && <Loader />}
             {message && <Message variant="danger" children={message} />}
@@ -88,7 +88,7 @@ const AddLink = () => {
                 className={`my-2 `}
                 variant="outline-dark"
               >
-                Cancel
+                Close
               </Button>
             </div>
           </Form>

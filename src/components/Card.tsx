@@ -1,4 +1,5 @@
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
+import Router from "next/router";
 import { Button } from "react-bootstrap";
 
 const Card = ({ data }) => {
@@ -7,8 +8,7 @@ const Card = ({ data }) => {
       `/api/cards/${data._id}`,
       "DELETE"
     );
-    console.log(response);
-    alert(response);
+    Router.replace("/dashboard");
   };
   return (
     <>
@@ -39,7 +39,6 @@ const Card = ({ data }) => {
           display: flex;
           justify-content: center;
           position: relative;
-          z-index: 3;
         }
 
         .deleteButton {
