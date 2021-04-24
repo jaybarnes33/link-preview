@@ -14,7 +14,7 @@ const Cards = ({ navs }) => {
 
   const { user } = useUser();
   const { data, error, isValidating } = useSWR(
-    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=10`,
+    `/api/cards/user/${user?._id}?page=${pageIndex}&limit=50`,
     fetchCards
   ); // useSWR for caching and realtime mutations
   const nextPage = () => data?.hasMore && setPageIndex(pageIndex + 1);
