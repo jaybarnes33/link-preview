@@ -4,7 +4,7 @@ import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
@@ -17,9 +17,12 @@ const Cards = ({ navs }) => {
     `/api/cards/user/${user?._id}?page=${pageIndex}&limit=10`,
     fetchCards
   ); // useSWR for caching and realtime mutations
-
   const nextPage = () => data?.hasMore && setPageIndex(pageIndex + 1);
   const prevPage = () => pageIndex > 1 && setPageIndex(pageIndex - 1);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [nextPage, prevPage]);
 
   return (
     <>
@@ -43,13 +46,15 @@ const Cards = ({ navs }) => {
           >
             <i className="bi bi-chevron-left"></i>
           </Button>
-          <Button
-            variant="light"
-            className={styles.paginationbtn}
-            onClick={nextPage}
-          >
-            <i className="bi bi-chevron-right"></i>
-          </Button>
+          {data?.hasMore && (
+            <Button
+              variant="light"
+              className={styles.paginationbtn}
+              onClick={nextPage}
+            >
+              <i className="bi bi-chevron-right"></i>
+            </Button>
+          )}
         </div>
       )}
       <style>{`
@@ -61,7 +66,7 @@ const Cards = ({ navs }) => {
       }
 
       .pagination-buttons button {
-        z-index:2;
+        z-index:3;
       }
       `}</style>
     </>

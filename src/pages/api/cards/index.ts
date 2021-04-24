@@ -13,7 +13,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const { limit = 10, page = 1 } = req.query as Record<string, string>;
       const [parsedLimit, parsedPage] = [Number(limit), Number(page)];
 
-      const cards = await Card.find({})
+      let cards = await Card.find({})
+        .sort({ createdAt: -1 })
         .limit(parsedLimit)
         .skip((parsedPage - 1) * parsedLimit)
         .populate("creator", "fname username");

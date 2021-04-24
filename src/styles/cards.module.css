@@ -4,11 +4,10 @@
 }
 
 .section {
-  position: absolute;
+  position: fixed;
   top: 0;
-
+  z-index: 2;
   width: 100%;
-  z-index: 3;
 }
 
 .formContainer {
@@ -18,11 +17,11 @@
   min-height: 100vh;
   width: 100%;
 }
-.form {
+.formContainer .form {
   position: relative;
   background-color: #ffffff;
   padding: 30px;
-  z-index: 3;
+  z-index: 4;
 }
 .addLink {
   position: fixed;
@@ -59,8 +58,9 @@
   position: relative;
 }
 
-.cardsWrapper .card {
-  z-index: 1 !important;
+.cardsWrapper button,
+.cardsWrapper a {
+  z-index: 3;
 }
 
 @media (min-width: 340px) and (max-width: 500px) {

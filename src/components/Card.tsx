@@ -4,11 +4,16 @@ import { Button } from "react-bootstrap";
 
 const Card = ({ data }) => {
   const handleDelete = async () => {
-    const response = await makeSecuredRequest(
-      `/api/cards/${data._id}`,
-      "DELETE"
-    );
-    Router.replace("/dashboard");
+    try {
+      const response = await makeSecuredRequest(
+        `/api/cards/${data._id}`,
+        "DELETE"
+      );
+
+      alert(response);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
   return (
     <>
