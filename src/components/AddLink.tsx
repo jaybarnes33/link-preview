@@ -2,7 +2,7 @@ import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import styles from "@/styles/cards.module.css";
 import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
-
+import Router from "next/router";
 import Loader from "./Loader";
 import Message from "./Message";
 
@@ -32,6 +32,7 @@ const AddLink = () => {
       setLoading(false);
       setisDone(true);
       setLink("");
+      Router.reload();
     } catch (error) {
       setLoading(false);
       setMessage(error.message);
