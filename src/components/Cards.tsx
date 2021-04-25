@@ -22,7 +22,7 @@ const Cards = ({ navs }) => {
         {data?.cards?.length === 0 && (
           <Message variant="success">No link previews to show</Message>
         )}
-        {data?.cards?.reverse().map((card) => (
+        {data?.cards?.map((card) => (
           <Card key={card._id} data={card} />
         ))}
         {!isValidating && error && (
