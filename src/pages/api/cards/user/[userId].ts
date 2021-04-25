@@ -21,7 +21,7 @@ export default async function handler(
       dbConnect();
 
       const cards = await Card.find({ creator: userId.toString() }).sort({createdAt:-1});
-      res.status(200).json( cards);
+      res.status(200).json({cards});
     } catch (error) {
       res.status(500).json(error.message);
     }
