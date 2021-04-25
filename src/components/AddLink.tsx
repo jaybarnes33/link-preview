@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
-import Router from "next/router";
+import { mutate } from "swr";
+import useUser from "@/hooks/useUser";
 
 const AddLink = () => {
   const [link, setLink] = useState("");
@@ -13,24 +14,28 @@ const AddLink = () => {
   const [show, setShow] = useState(false);
   const [isDone, setisDone] = useState(false);
 
+  const { user } = useUser();
+
   useEffect(() => {
     if (loading) {
       setShow(false);
     }
   }, [loading, show]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setLoading(true);
 
       await makeSecuredRequest("/api/cards/", "POST", {
-        url: link,
+        url: link
       });
+
+      mutate(`/api/cards/user/${user?._id}`);
       setShow(false);
       setLoading(false);
       setisDone(true);
       setLink("");
-      Router.reload();
     } catch (error) {
       setLoading(false);
       setMessage(error.message);
@@ -73,7 +78,7 @@ const AddLink = () => {
               type="url"
               value={link}
               placeholder="Enter a link to preview"
-              onChange={(e) => setLink(e.target.value)}
+              onChange={e => setLink(e.target.value)}
               autoFocus
             />
             <div className={styles.buttons}>
