@@ -14,7 +14,7 @@ const Card = ({ data }) => {
 
       alert(response);
       setDone(true);
-      Router.replace("/");
+      Router.reload();
     } catch (error) {
       console.error(error.message);
     }
