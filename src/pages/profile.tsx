@@ -95,6 +95,7 @@ const Profile = () => {
             image,
           }
         );
+
         setMessage("Profile updated");
       } catch (e) {
         setMessage(e.response.data.error);
@@ -112,7 +113,7 @@ const Profile = () => {
           <title>{user?.fName + " " + user?.lName} Profile</title>
         </Head>
         {loading && <Loader />}
-        {message && <Message variant="danger">{message}</Message>}
+        {message && <Message>{message}</Message>}
         <Form className={styles.formContainer} onSubmit={handleSubmit}>
           <div className={styles.formHeading}>
             <h1 className={styles.heading}>My Profile</h1>
