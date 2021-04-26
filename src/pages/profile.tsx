@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FormEvent, FormEventHandler, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Form, Button } from "react-bootstrap";
 import Head from "next/head";
@@ -6,12 +6,11 @@ import styles from "../styles/forms.module.css";
 import countries from "@/data/countries";
 import axios from "axios";
 import useUser from "../hooks/useUser";
-import Link from "next/link";
 import Loader from "@/components/Loader";
 import Message from "@/components/Message";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import useSWR from "swr";
-import { isResSent } from "next/dist/next-server/lib/utils";
+
 import Layout from "@/components/Layout";
 const Profile = () => {
   // Props
@@ -30,11 +29,14 @@ const Profile = () => {
         username: String(user.username),
         email: String(user.email),
         country: String(user.country),
+        image: String(user.image),
       }));
     }
   }, [authenticating, isAuthenticated]);
 
   const [message, setMessage] = useState("");
+  const [image, setImage] = useState("");
+  const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fName: "",
@@ -54,8 +56,27 @@ const Profile = () => {
     }));
   };
 
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "/multipart/form-data",
+        },
+      };
+      const { data } = await axios.post("/api/uploads", formData, config);
+      console.log(data);
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log(user);
     e.preventDefault();
     const { fName, lName, password, username, email, country } = formData;
     if (formData.confirmPassword === formData.password) {
@@ -71,6 +92,7 @@ const Profile = () => {
             password,
             username,
             email,
+            image,
           }
         );
         setMessage("Profile updated");
@@ -99,6 +121,22 @@ const Profile = () => {
           </div>
 
           <div className={styles.formContent}>
+            <Form.Group controlId="image">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Image URL"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              ></Form.Control>
+              <Form.File
+                type="text"
+                label="Choose file"
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
+            </Form.Group>
             <Form.Group className={styles.name}>
               <Form.Control
                 type="text"

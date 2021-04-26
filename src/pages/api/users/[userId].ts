@@ -23,7 +23,7 @@ export default async (
         lName,
         password,
         email,
-        avatar,
+        image,
         country,
       } = req.body;
 
@@ -32,7 +32,7 @@ export default async (
       user.lName = lName || user.lName;
       user.password = password || user.password;
       user.email = email || user.email;
-      user.avatar = avatar || user.avatar;
+      user.image = image || user.image;
       user.country = country || user.country;
 
       const updatedUser = await user.save();

@@ -12,7 +12,6 @@ const AddLink = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-  const [isDone, setisDone] = useState(false);
 
   const { user } = useUser();
 
@@ -28,13 +27,13 @@ const AddLink = () => {
       setLoading(true);
 
       await makeSecuredRequest("/api/cards/", "POST", {
-        url: link
+        url: link,
       });
 
       mutate(`/api/cards/user/${user?._id}`);
       setShow(false);
       setLoading(false);
-      setisDone(true);
+
       setLink("");
     } catch (error) {
       setLoading(false);
@@ -78,7 +77,7 @@ const AddLink = () => {
               type="url"
               value={link}
               placeholder="Enter a link to preview"
-              onChange={e => setLink(e.target.value)}
+              onChange={(e) => setLink(e.target.value)}
               autoFocus
             />
             <div className={styles.buttons}>

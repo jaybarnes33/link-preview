@@ -9,7 +9,7 @@ import { Button } from "react-bootstrap";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
-const Cards = ({ navs }) => {
+const Cards = () => {
   const { user } = useUser();
   const { data, error, isValidating } = useSWR(
     `/api/cards/user/${user?._id}`,
