@@ -29,8 +29,8 @@ const Profile = () => {
         username: String(user.username),
         email: String(user.email),
         country: String(user.country),
-        image: String(user.image),
       }));
+      setImage(user.image);
     }
   }, [authenticating, isAuthenticated]);
 
@@ -119,10 +119,10 @@ const Profile = () => {
             <p>Please fill this form to update your profile.</p>
             <hr />
           </div>
+          <img className={styles.profileImage} src={user?.image} />
 
           <div className={styles.formContent}>
             <Form.Group controlId="image">
-              <Form.Label>Image</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Image URL"

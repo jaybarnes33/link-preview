@@ -18,7 +18,7 @@ const links = () => {
   return (
     <Layout>
       <div className={styles.wrapper}>
-        <Cards navs={true} />
+        <Cards />
       </div>
     </Layout>
   );

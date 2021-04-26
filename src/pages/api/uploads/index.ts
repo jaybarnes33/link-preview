@@ -11,7 +11,7 @@ const router = nextConnect();
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "./public/uploads/");
+    cb(null, "./uploads/");
   },
   filename(req, file, cb) {
     cb(

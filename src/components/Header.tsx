@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { Navbar, Container, Nav, Button, Image } from "react-bootstrap";
+import {
+  Navbar,
+  Container,
+  Nav,
+  Button,
+  Image,
+  NavDropdown,
+} from "react-bootstrap";
 import Link from "next/link";
 import Router from "next/router";
 import useUser from "@/hooks/useUser";
@@ -68,7 +75,7 @@ const Header = () => {
                 <Nav className="ml-auto py-2">
                   <Nav.Item>
                     <Nav.Link as={Link} href="/links">
-                      <a>Links</a>
+                      <a>Cards</a>
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -76,11 +83,14 @@ const Header = () => {
                       <a>Profile</a>
                     </Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link className="logout" onClick={handleLogout}>
-                      Logout
-                    </Nav.Link>
-                  </Nav.Item>
+                  <NavDropdown
+                    id="profile"
+                    title={<img src={user.image} className="profile" />}
+                  >
+                    <NavDropdown.Item onClick={handleLogout}>
+                      Log out
+                    </NavDropdown.Item>
+                  </NavDropdown>
                 </Nav>
               </Navbar.Collapse>
             </>

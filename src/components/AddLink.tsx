@@ -70,7 +70,6 @@ const AddLink = () => {
         {show && (
           <Form className={styles.form} onSubmit={handleSubmit}>
             <h1 className={styles.heading}>Post a Link</h1>
-
             <Form.Control
               id="input"
               className={styles.input}

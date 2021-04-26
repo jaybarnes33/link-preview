@@ -37,20 +37,28 @@ header {
   padding: 0 0.7rem;
 }
 
-.nav-item a,
-.logout a {
-  color: #f4f4f4 !important;
+.nav-item a {
+  color: #f4f4f4;
   font-size: 1.2rem;
 }
 
-.hide .btn {
-  display: none !important;
+.nav-item a:hover {
+  color: #f4f4f4;
 }
 
-.nav-item a:hover,
-.logout a:hover,
-a:hover {
-  color: #f4f4f4;
+.profile {
+  margin-top: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.dropdown-item {
+  color: #101010 !important;
+}
+
+.dropdown-toggle {
+  color: #f4f4f4 !important;
 }
 a:hover {
   text-decoration: none;
