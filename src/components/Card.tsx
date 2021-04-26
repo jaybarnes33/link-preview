@@ -1,9 +1,11 @@
+import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
-import Router from "next/router";
 import { useState } from "react";
+import { mutate } from "swr";
 
 const Card = ({ data }) => {
   const [done, setDone] = useState(false);
+  const { user } = useUser();
 
   const handleDelete = async () => {
     try {
@@ -13,8 +15,7 @@ const Card = ({ data }) => {
       );
 
       alert(response);
-      setDone(true);
-      Router.reload();
+      mutate(`/api/cards/user/${user?._id}`);
     } catch (error) {
       console.error(error.message);
     }
