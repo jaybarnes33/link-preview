@@ -32,7 +32,7 @@ export default async (
       user.lName = lName || user.lName;
       user.password = password || user.password;
       user.email = email || user.email;
-      user.image = image || user.image;
+      user.image = image.replace("/public", "") || user.image;
       user.country = country || user.country;
 
       const updatedUser = await user.save();
