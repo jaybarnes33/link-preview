@@ -22,7 +22,7 @@ const dashboard = () => {
       </Head>
       <div className={styles.wrapper}>
         <AddLink />
-        <Cards navs />
+        <Cards />
       </div>
     </Layout>
   );
