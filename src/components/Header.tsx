@@ -85,7 +85,13 @@ const Header = () => {
                   </Nav.Item>
                   <NavDropdown
                     id="profile"
-                    title={<img src={user.image} className="profile" />}
+                    title={
+                      user?.image ? (
+                        <img src={user.image} className="profile" />
+                      ) : (
+                        <span className="profiletext">{user.username}</span>
+                      )
+                    }
                   >
                     <NavDropdown.Item onClick={handleLogout}>
                       Log out

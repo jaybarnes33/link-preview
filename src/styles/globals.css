@@ -51,6 +51,10 @@ header {
   width: 40px;
   height: 40px;
   border-radius: 100%;
+  object-fit: fill;
+  padding: 10px;
+  border: 3px dashed goldenrod;
+  background-color: orange;
 }
 
 .dropdown-item {
