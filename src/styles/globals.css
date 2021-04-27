@@ -24,6 +24,20 @@ header {
   background-color: #101010e2;
 }
 
+.cardWrapper .dropdown {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.cardWrapper .dropdown .btn-dark,
+.dropdown .bi,
+.dropdown-toggle {
+  background: none;
+  color: #101010;
+  border: none;
+}
+
 .navbar-brand a {
   color: white;
   font-weight: bold;

@@ -2,7 +2,7 @@ import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import { useState } from "react";
 import { mutate } from "swr";
-
+import { Dropdown } from "react-bootstrap";
 const Card = ({ data }) => {
   const [done, setDone] = useState(false);
   const { user } = useUser();
@@ -24,10 +24,17 @@ const Card = ({ data }) => {
     <>
       <div className="cardContainer">
         <div className="cardWrapper">
-          <button className="menu-toggle btn" onClick={handleDelete}>
-            {" "}
-            <i className="bi bi-three-dots-vertical"></i>
-          </button>
+          <Dropdown>
+            <Dropdown.Toggle variant="dark" id="dropdown-basic">
+              <i className="bi bi-three-dots-vertical"></i>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Category</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Reaction</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
           {data.image?.length > 3 && (
             <img className="cardImage" src={data.image} alt={data.title} />
           )}
@@ -51,16 +58,6 @@ const Card = ({ data }) => {
           display: flex;
           justify-content: center;
           position: relative;
-        }
-
-        .menu-toggle {
-          position: absolute;
-          right: -3px;
-          top: -1px;
-
-          border: none;
-          border-radius: 10px 0 10px 0;
-          padding: 10px 20px;
         }
 
         .cardWrapper {
