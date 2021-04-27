@@ -68,7 +68,6 @@ const Profile = () => {
         },
       };
       const { data } = await axios.post("/api/uploads", formData, config);
-      console.log(data);
       setImage(data);
       setUploading(false);
     } catch (error) {
@@ -120,7 +119,11 @@ const Profile = () => {
             <p>Please fill this form to update your profile.</p>
             <hr />
           </div>
-          <img className={styles.profileImage} src={user?.image} />
+          {user.image ? (
+            <img className={styles.profileImage} src={user?.image} />
+          ) : (
+            <div className="profiletext">{`${user.fName[0]}${user.lName[0]}`}</div>
+          )}
 
           <div className={styles.formContent}>
             <Form.Group controlId="image">

@@ -89,7 +89,7 @@ const Header = () => {
                       user?.image ? (
                         <img src={user.image} className="profile" />
                       ) : (
-                        <span className="profiletext">{user.username}</span>
+                        <div className="profiletext">{`${user.fName[0]}${user.lName[0]}`}</div>
                       )
                     }
                   >

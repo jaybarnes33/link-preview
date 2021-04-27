@@ -31,10 +31,9 @@ header {
   letter-spacing: 3px;
 }
 
-.nav-item,
-.logout,
-.addlink {
+.nav-item {
   padding: 0 0.7rem;
+  position: relative;
 }
 
 .nav-item a {
@@ -53,8 +52,26 @@ header {
   border-radius: 100%;
   object-fit: fill;
   padding: 10px;
-  border: 3px dashed goldenrod;
+
   background-color: orange;
+}
+
+.profiletext {
+  position: relative;
+  bottom: 0px;
+  width: 50px;
+  display: inline-block;
+  padding: 10px 15px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  font-size: 1.3rem;
+  /* position: absolute; */
+}
+
+nav .profiletext {
+  font-size: 1rem;
+  bottom: 10px;
 }
 
 .dropdown-item {
