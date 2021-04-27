@@ -24,11 +24,11 @@ const Profile = () => {
     } else {
       setFormData((prevState) => ({
         ...prevState,
-        fName: String(user?.fName),
-        lName: String(user?.lName),
-        username: String(user?.username),
-        email: String(user?.email),
-        country: String(user?.country),
+        fName: String(user.fName),
+        lName: String(user.lName),
+        username: String(user.username),
+        email: String(user.email),
+        country: String(user.country),
       }));
       setImage(user?.image);
     }
