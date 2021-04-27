@@ -24,7 +24,7 @@ export default async (
         password,
         email,
         image,
-        country,
+        country
       } = req.body;
 
       user.username = username || user.username;
@@ -38,7 +38,10 @@ export default async (
       user.country = country || user.country;
 
       const updatedUser = await user.save();
-      res.status(201).json(updatedUser);
+
+      const { password: pass, ...rest } = updatedUser._doc;
+
+      res.status(201).json(rest);
     } catch (error) {
       console.log(error);
       res.status(500).end("Something went wrong");

@@ -1,4 +1,4 @@
-import { FormEvent, FormEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Form, Button } from "react-bootstrap";
 import Head from "next/head";
@@ -9,30 +9,12 @@ import useUser from "../hooks/useUser";
 import Loader from "@/components/Loader";
 import Message from "@/components/Message";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
-import useSWR from "swr";
-
 import Layout from "@/components/Layout";
+
 const Profile = () => {
   // Props
   const { replace } = useRouter();
-  const { user, authenticating, isAuthenticated } = useUser();
-  useEffect(() => {
-    if (!authenticating && !isAuthenticated) {
-      // if we're done loading and user isn't authenticated
-      replace("/login");
-    } else {
-      setFormData((prevState) => ({
-        ...prevState,
-        fName: String(user?.fName),
-        lName: String(user?.lName),
-        username: String(user?.username),
-        email: String(user?.email),
-        country: String(user?.country),
-      }));
-      setImage(user?.image);
-    }
-  }, [user, authenticating, isAuthenticated]);
-
+  const { user, authenticating, isAuthenticated, mutate } = useUser();
   const [message, setMessage] = useState("");
   const [image, setImage] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -44,28 +26,51 @@ const Profile = () => {
     username: "",
     password: "",
     country: "",
-    confirmPassword: "",
+    confirmPassword: ""
   });
+
+  useEffect(() => {
+    if (!authenticating && !isAuthenticated) {
+      // if we're done loading and user isn't authenticated
+      replace("/login");
+    }
+
+    if (user) {
+      setFormData(prevState => ({
+        ...prevState,
+        fName: user.fName,
+        lName: user.lName,
+        username: user.username,
+        email: user.email,
+        country: user.country
+      }));
+
+      setImage(user.image);
+    }
+  }, [user, authenticating, isAuthenticated]);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
+
+    setFormData(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
 
-  const uploadFileHandler = async (e) => {
+  const uploadFileHandler = async e => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
     setUploading(true);
+
     try {
       const config = {
         headers: {
-          "Content-Type": "/multipart/form-data",
-        },
+          "Content-Type": "/multipart/form-data"
+        }
       };
+
       const { data } = await axios.post("/api/uploads", formData, config);
       setImage(data);
       setUploading(false);
@@ -77,6 +82,7 @@ const Profile = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { fName, lName, password, username, email, country } = formData;
+
     if (formData.confirmPassword === formData.password) {
       try {
         setLoading(true);
@@ -90,10 +96,11 @@ const Profile = () => {
             password,
             username,
             email,
-            image,
+            image
           }
         );
 
+        mutate(data);
         setMessage("Profile updated");
       } catch (e) {
         setMessage(e.response.data.error);
@@ -108,7 +115,7 @@ const Profile = () => {
     <Layout>
       <div className={styles.formWrapper}>
         <Head>
-          <title>{user?.fName + " " + user?.lName} Profile</title>
+          <title>Profile {user && `| ${user.fName} ${user.lName}`}</title>
         </Head>
         {loading && <Loader />}
         {message && <Message>{message}</Message>}
@@ -130,7 +137,7 @@ const Profile = () => {
                 type="text"
                 placeholder="Enter Image URL"
                 value={image}
-                onChange={(e) => setImage(e.target.value)}
+                onChange={e => setImage(e.target.value)}
               ></Form.Control>
               <Form.File
                 type="text"
@@ -192,7 +199,7 @@ const Profile = () => {
               onChange={handleChange}
             >
               <option value="">Select a country</option>
-              {countries.map((country) => (
+              {countries.map(country => (
                 <option value={country.name} key={country.name}>
                   {country.emoji} {country.name}
                 </option>

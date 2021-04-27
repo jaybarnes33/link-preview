@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import makeSecuredRequest, { getNewToken } from "../utils/makeSecuredRequest";
 
 const useUser = () => {
-  const { data: user, error } = useSWR(
+  const { data: user, error, mutate } = useSWR(
     ["/api/users/user", "GET"],
-
     makeSecuredRequest
   );
 
@@ -30,9 +29,10 @@ const useUser = () => {
   return {
     user,
     error,
+    mutate,
     fetchingUser: !error && !user,
     authenticating,
-    isAuthenticated,
+    isAuthenticated
   };
 };
 

@@ -15,7 +15,7 @@ export default async (
     const userID = getUserID(token);
     if (!userID) return res.status(401).end("Unauthorized!");
 
-    const user = await User.findById(userID);
+    const user = await User.findById(userID).select("-password");
 
     if (!user) return res.status(400).end("User not found");
 
