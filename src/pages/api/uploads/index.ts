@@ -14,7 +14,7 @@ aws.config.update({
 });
 
 type NextApiRequestWithFormData = NextApiRequest & {
-  file: File & { location: string };
+  file: File & { key: string };
 };
 
 const router = nextConnect();
@@ -59,7 +59,7 @@ router.post(async (req: NextApiRequestWithFormData, res: NextApiResponse) => {
     // const user = await User.findById(userID);
 
     // if (!user) return res.status(400).end("User not found");
-    res.send(`${req.file.location}`);
+    res.send(`${req.file.key}`);
   } catch (error) {
     console.log(error);
     res.status(500).end("Something went wrong");

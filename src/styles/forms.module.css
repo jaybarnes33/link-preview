@@ -36,6 +36,8 @@
   width: 90px;
   height: 90px;
   border-radius: 150px;
+  object-fit: cover;
+  object-position: top;
 }
 .formContainer button {
   border: none;
