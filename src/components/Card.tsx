@@ -24,12 +24,9 @@ const Card = ({ data }) => {
     <>
       <div className="cardContainer">
         <div className="cardWrapper">
-          <button
-            className="deleteButton btn btn-warning"
-            onClick={handleDelete}
-          >
+          <button className="menu-toggle btn" onClick={handleDelete}>
             {" "}
-            <i className="bi  bi-trash"></i>
+            <i className="bi bi-three-dots-vertical"></i>
           </button>
           {data.image?.length > 3 && (
             <img className="cardImage" src={data.image} alt={data.title} />
@@ -56,9 +53,9 @@ const Card = ({ data }) => {
           position: relative;
         }
 
-        .deleteButton {
+        .menu-toggle {
           position: absolute;
-          left: -3px;
+          right: -3px;
           top: -1px;
 
           border: none;

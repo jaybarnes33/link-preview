@@ -64,11 +64,11 @@ const AddLink = () => {
         </Button>
       )}
 
-      <div className={styles.formContainer}>
-        {loading && <Loader />}
-        {message && <Message variant="danger" children={message} />}
-        {show && (
-          <Form className={styles.form} onSubmit={handleSubmit}>
+      {message && <Message variant="danger" children={message} />}
+      {show && (
+        <Form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.formContainer}>
+            {loading && <Loader />}
             <h1 className={styles.heading}>Post a Link</h1>
             <Form.Control
               id="input"
@@ -95,9 +95,9 @@ const AddLink = () => {
                 Close
               </Button>
             </div>
-          </Form>
-        )}
-      </div>
+          </div>
+        </Form>
+      )}
     </section>
   );
 };

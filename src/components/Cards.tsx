@@ -5,7 +5,6 @@ import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
