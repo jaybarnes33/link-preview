@@ -16,23 +16,22 @@ const Profile = () => {
   // Props
   const { replace } = useRouter();
   const { user, authenticating, isAuthenticated } = useUser();
-
   useEffect(() => {
-    if (!authenticating && !isAuthenticated && user?._id) {
+    if (!authenticating && !isAuthenticated) {
       // if we're done loading and user isn't authenticated
       replace("/login");
     } else {
       setFormData((prevState) => ({
         ...prevState,
-        fName: String(user.fName),
-        lName: String(user.lName),
-        username: String(user.username),
-        email: String(user.email),
-        country: String(user.country),
+        fName: String(user?.fName),
+        lName: String(user?.lName),
+        username: String(user?.username),
+        email: String(user?.email),
+        country: String(user?.country),
       }));
       setImage(user?.image);
     }
-  }, [authenticating, isAuthenticated]);
+  }, [user, authenticating, isAuthenticated]);
 
   const [message, setMessage] = useState("");
   const [image, setImage] = useState("");
@@ -122,7 +121,7 @@ const Profile = () => {
           {user?.image ? (
             <img className={styles.profileImage} src={user?.image} />
           ) : (
-            <div className="profiletext">{`${user.fName[0]}${user.lName[0]}`}</div>
+            <div className="profiletext">{`${user?.fName[0]}${user?.lName[0]}`}</div>
           )}
 
           <div className={styles.formContent}>
