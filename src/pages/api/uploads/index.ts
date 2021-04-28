@@ -10,7 +10,7 @@ import User from "@/models/User";
 aws.config.update({
   secretAccessKey: process.env.AWS_KEY,
   accessKeyId: process.env.AWS_KEY_ID,
-  region: process.env.AWS_REGION,
+  region: process.env.AWS_REGION_,
 });
 
 type NextApiRequestWithFormData = NextApiRequest & {

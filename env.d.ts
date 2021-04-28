@@ -6,7 +6,7 @@ declare namespace NodeJS {
     ATLAS_URI: string;
     AWS_KEY_ID: string;
     AWS_KEY: string;
-    AWS_REGION: string;
+    AWS_REGION_: string;
     BUCKET: string;
   }
 }
