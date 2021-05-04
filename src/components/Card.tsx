@@ -133,13 +133,14 @@ const Card = ({ data }) => {
           display: grid;
           grid-template-columns: repeat(3, 20%);
         }
-        .reactions button {
-          background: none;
-          border: none;
-          border-right: 1px solid grey;
+        .reactions span {
           font-size: 1.2rem;
         }
 
+        .reactions span:hover {
+          cursor: pointer;
+          transform: scale(1.3);
+        }
         .reaction {
           display: flex;
           width: 100%;
