@@ -144,8 +144,9 @@ const Card = ({ data }) => {
           display: flex;
           width: 100%;
           position: absolute;
-          bottom: 10px;
-          left: 0;
+          top: -1.6rem;
+
+          left: -1rem;
         }
 
         .reaction span {
