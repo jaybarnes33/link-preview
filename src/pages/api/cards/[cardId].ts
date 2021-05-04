@@ -29,4 +29,33 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).end("Something went wrong");
     }
   }
+  if (req.method == "PUT") {
+    try {
+      const { reaction, category } = req.body;
+      await dbConnect();
+
+      const { cardId } = req.query;
+      const token = req.headers.authorization.split(" ")[1];
+
+      const userID = getUserID(token);
+      if (!userID) {
+        return res.status(401).end("Unauthorized!");
+      } else {
+        const card = await Card.findById(cardId);
+
+        if (card.creator.toString() == userID.toString()) {
+          card.reaction = reaction || card.reaction;
+          card.category = category || card.category;
+
+          const updated = await card.save();
+          res.status(201).json(updated);
+        } else {
+          res.status(403).json("Something went wrong");
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).end("Something went wrong");
+    }
+  }
 };

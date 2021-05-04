@@ -5,7 +5,11 @@ import { mutate } from "swr";
 import { Dropdown } from "react-bootstrap";
 const Card = ({ data }) => {
   const [done, setDone] = useState(false);
+  const [showCategory, setShowCategory] = useState(false);
+  const [showReaction, setShowReaction] = useState(false);
   const { user } = useUser();
+
+  const [reaction, setReaction] = useState("");
 
   const handleDelete = async () => {
     try {
@@ -20,46 +24,62 @@ const Card = ({ data }) => {
       console.error(error.message);
     }
   };
+
+  const handleReactions = () => {
+    setShowReaction(!showReaction);
+  };
+
+  const handleCategory = () => {
+    setShowCategory(true);
+  };
+
   return (
     <>
-      <div className="cardContainer">
-        <div className="cardWrapper">
-          <Dropdown>
-            <Dropdown.Toggle variant="dark" id="dropdown-basic">
-              <i className="bi bi-three-dots-vertical"></i>
-            </Dropdown.Toggle>
+      <div className="cardWrapper">
+        <Dropdown>
+          <Dropdown.Toggle variant="dark" id="dropdown-basic">
+            <i className="bi bi-three-dots-vertical"></i>
+          </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Category</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Reaction</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          {data.image?.length > 3 && (
-            <img className="cardImage" src={data.image} alt={data.title} />
-          )}
-          <div className="cardText">
-            <h1 className="cardTitle">{data.title}</h1>
-            {data.description && <p>{data.description.substring(0, 91)} ...</p>}
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
+            <Dropdown.Item onClick={handleReactions}>Reaction</Dropdown.Item>
+            <Dropdown.Item onClick={handleCategory}>Category</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
 
-            <a
-              className="cardButton btn btn-warning"
-              href={data.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="bi bi-chevron-right"></i>
-            </a>
+        {data.image?.length > 3 && (
+          <img className="cardImage" src={data.image} alt={data.title} />
+        )}
+        {showReaction && (
+          <div className="reactions">
+            <input type="hidden" value={reaction} />
+            <button onClick={(e) => setReaction("love")}>
+              <i className="bi bi-emoji-heart-eyes"></i>
+            </button>
+            <button>
+              <i className="bi bi-emoji-laughing"></i>
+            </button>
+            <button>
+              <i className="bi bi-hand-thumbs-up"></i>
+            </button>
           </div>
+        )}
+        <div className="cardText">
+          <h1 className="cardTitle">{data.title}</h1>
+          {data.description && <p>{data.description.substring(0, 91)} ...</p>}
+
+          <a
+            className="cardButton btn btn-warning"
+            href={data.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="bi bi-chevron-right"></i>
+          </a>
         </div>
       </div>
       <style jsx>{`
-        .cardContainer {
-          display: flex;
-          justify-content: center;
-          position: relative;
-        }
-
         .cardWrapper {
           box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
           padding: 50px 30px;

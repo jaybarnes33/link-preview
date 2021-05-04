@@ -8,6 +8,8 @@ export interface ICardSchema extends Document {
   title: string;
   icon: String;
   creator: String;
+  category: String;
+  reaction: String;
 }
 
 const CardSchema = new mongoose.Schema<ICardSchema>(
@@ -33,6 +35,12 @@ const CardSchema = new mongoose.Schema<ICardSchema>(
       type: String,
     },
     favicon: {
+      type: String,
+    },
+    category: {
+      type: String,
+    },
+    reaction: {
       type: String,
     },
   },
