@@ -43,7 +43,7 @@ const Card = ({ data }) => {
         <span className="reaction">
           {data.reaction == "like" && <i>👍</i>}
           {data.reaction == "love" && <i>😍</i>}
-          {data.reaction == "laugh" && <i></i>}
+          {data.reaction == "laugh" && <i>😂</i>}
         </span>
         <Dropdown>
           <Dropdown.Toggle variant="dark" id="dropdown-basic">
