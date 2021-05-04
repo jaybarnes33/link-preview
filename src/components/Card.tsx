@@ -41,9 +41,9 @@ const Card = ({ data }) => {
     <>
       <div className="cardWrapper">
         <span className="reaction">
-          {data.reaction == "like" && <i>👍</i>}
-          {data.reaction == "love" && <i>😍</i>}
-          {data.reaction == "laugh" && <i>😂</i>}
+          {data.reaction == "like" && <span>👍</span>}
+          {data.reaction == "love" && <span>😍</span>}
+          {data.reaction == "laugh" && <span>😂</span>}
         </span>
         <Dropdown>
           <Dropdown.Toggle variant="dark" id="dropdown-basic">
@@ -66,21 +66,16 @@ const Card = ({ data }) => {
         )}
         {showReaction && (
           <div className="reactions">
-            <span>
-              <i id="love" onClick={(e) => handleReactions(e)}>
-                😍
-              </i>
+            <span id="love" onClick={(e) => handleReactions(e)}>
+              😍
             </span>
 
-            <span>
-              <i id="laugh" onClick={(e) => handleReactions(e)}>
-                😂
-              </i>
+            <span id="laugh" onClick={(e) => handleReactions(e)}>
+              😂
             </span>
-            <span>
-              <i id="like" onClick={(e) => handleReactions(e)}>
-                👍
-              </i>
+
+            <span id="like" onClick={(e) => handleReactions(e)}>
+              👍
             </span>
           </div>
         )}
@@ -145,7 +140,15 @@ const Card = ({ data }) => {
           font-size: 1.2rem;
         }
 
-        .reaction i {
+        .reaction {
+          display: flex;
+          width: 100%;
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+        }
+
+        .reaction span {
           font-size: 2rem;
         }
 
