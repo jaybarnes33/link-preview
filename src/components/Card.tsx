@@ -4,12 +4,9 @@ import { useState } from "react";
 import { mutate } from "swr";
 import { Dropdown } from "react-bootstrap";
 const Card = ({ data }) => {
-  const [done, setDone] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
   const [showReaction, setShowReaction] = useState(false);
   const { user } = useUser();
-
-  const [reaction, setReaction] = useState("");
 
   const handleDelete = async () => {
     try {
@@ -25,17 +22,29 @@ const Card = ({ data }) => {
     }
   };
 
-  const handleReactions = () => {
-    setShowReaction(!showReaction);
-  };
+  const handleReactions = async (e) => {
+    try {
+      const response = await makeSecuredRequest(
+        `/api/cards/${data._id}`,
+        "PUT",
+        {
+          reaction: e.target.id,
+        }
+      );
 
-  const handleCategory = () => {
-    setShowCategory(true);
+      setShowReaction(false);
+      mutate(`/api/cards/user/${user?._id}`);
+    } catch (error) {}
   };
 
   return (
     <>
       <div className="cardWrapper">
+        <span className="reaction">
+          {data.reaction == "like" && <i>👍</i>}
+          {data.reaction == "love" && <i>😍</i>}
+          {data.reaction == "laugh" && <i>😂</i>}
+        </span>
         <Dropdown>
           <Dropdown.Toggle variant="dark" id="dropdown-basic">
             <i className="bi bi-three-dots-vertical"></i>
@@ -43,8 +52,12 @@ const Card = ({ data }) => {
 
           <Dropdown.Menu>
             <Dropdown.Item onClick={handleDelete}>Delete</Dropdown.Item>
-            <Dropdown.Item onClick={handleReactions}>Reaction</Dropdown.Item>
-            <Dropdown.Item onClick={handleCategory}>Category</Dropdown.Item>
+            <Dropdown.Item onClick={(e) => setShowReaction(!showReaction)}>
+              Reaction
+            </Dropdown.Item>
+            <Dropdown.Item onClick={(e) => setShowCategory(!showCategory)}>
+              Category
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
@@ -53,16 +66,22 @@ const Card = ({ data }) => {
         )}
         {showReaction && (
           <div className="reactions">
-            <input type="hidden" value={reaction} />
-            <button onClick={(e) => setReaction("love")}>
-              <i className="bi bi-emoji-heart-eyes"></i>
-            </button>
-            <button>
-              <i className="bi bi-emoji-laughing"></i>
-            </button>
-            <button>
-              <i className="bi bi-hand-thumbs-up"></i>
-            </button>
+            <span>
+              <i id="love" onClick={(e) => handleReactions(e)}>
+                😍
+              </i>
+            </span>
+
+            <span>
+              <i id="laugh" onClick={(e) => handleReactions(e)}>
+                😂
+              </i>
+            </span>
+            <span>
+              <i id="like" onClick={(e) => handleReactions(e)}>
+                👍
+              </i>
+            </span>
           </div>
         )}
         <div className="cardText">
@@ -91,6 +110,10 @@ const Card = ({ data }) => {
           position: relative;
         }
 
+        .emoji {
+          background-color: yellow;
+        }
+
         .cardImage {
           display: flex;
           margin: auto;
@@ -109,6 +132,21 @@ const Card = ({ data }) => {
           color: #2978b5;
 
           font-weight: bold;
+        }
+
+        .reactions {
+          display: grid;
+          grid-template-columns: repeat(3, 20%);
+        }
+        .reactions button {
+          background: none;
+          border: none;
+          border-right: 1px solid grey;
+          font-size: 1.2rem;
+        }
+
+        .reaction i {
+          font-size: 2rem;
         }
 
         .cardText {
