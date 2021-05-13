@@ -103,7 +103,13 @@ const Card = ({ data }) => {
           <img className="cardImage" src={data.image} alt={data.title} />
         )}
 
-        {data?.category && <div className="category">{data.category}</div>}
+        {data?.category && (
+          <div className="category">
+            {" "}
+            <i className="bi bi-pin mr-1"></i>
+            {data.category}
+          </div>
+        )}
         {showReaction && (
           <div className="reactions">
             <div>
