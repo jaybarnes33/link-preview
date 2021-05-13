@@ -26,7 +26,7 @@ const Profile = () => {
     username: "",
     password: "",
     country: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   useEffect(() => {
@@ -36,13 +36,13 @@ const Profile = () => {
     }
 
     if (user) {
-      setFormData(prevState => ({
+      setFormData((prevState) => ({
         ...prevState,
         fName: user.fName,
         lName: user.lName,
         username: user.username,
         email: user.email,
-        country: user.country
+        country: user.country,
       }));
 
       setImage(user.image);
@@ -52,13 +52,13 @@ const Profile = () => {
   const handleChange = (e: any) => {
     const { name, value } = e.target;
 
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const uploadFileHandler = async e => {
+  const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
@@ -67,8 +67,8 @@ const Profile = () => {
     try {
       const config = {
         headers: {
-          "Content-Type": "/multipart/form-data"
-        }
+          "Content-Type": "/multipart/form-data",
+        },
       };
 
       const { data } = await axios.post("/api/uploads", formData, config);
@@ -96,7 +96,7 @@ const Profile = () => {
             password,
             username,
             email,
-            image
+            image,
           }
         );
 
@@ -126,7 +126,10 @@ const Profile = () => {
             <hr />
           </div>
           {user?.image ? (
-            <img className={styles.profileImage} src={user?.image} />
+            <img
+              className={styles.profileImage}
+              src={`/uploads/${user?.image}`}
+            />
           ) : (
             <div className="profiletext">{`${user?.fName[0]}${user?.lName[0]}`}</div>
           )}
@@ -137,7 +140,7 @@ const Profile = () => {
                 type="text"
                 placeholder="Enter Image URL"
                 value={image}
-                onChange={e => setImage(e.target.value)}
+                onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
               <Form.File
                 type="text"
@@ -199,7 +202,7 @@ const Profile = () => {
               onChange={handleChange}
             >
               <option value="">Select a country</option>
-              {countries.map(country => (
+              {countries.map((country) => (
                 <option value={country.name} key={country.name}>
                   {country.emoji} {country.name}
                 </option>

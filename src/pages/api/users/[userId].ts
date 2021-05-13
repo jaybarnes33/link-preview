@@ -24,7 +24,7 @@ export default async (
         password,
         email,
         image,
-        country
+        country,
       } = req.body;
 
       user.username = username || user.username;
@@ -32,9 +32,7 @@ export default async (
       user.lName = lName || user.lName;
       user.password = password || user.password;
       user.email = email || user.email;
-      user.image =
-        "https://cardsforchange.s3.eu-west-3.amazonaws.com/" + image ||
-        user.image;
+      user.image = image || user.image;
       user.country = country || user.country;
 
       const updatedUser = await user.save();
