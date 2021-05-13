@@ -80,7 +80,10 @@ const Header = () => {
                     id="profile"
                     title={
                       user?.image ? (
-                        <img src={user.image} className="profile" />
+                        <img
+                          src={`uploads/${user.image}`}
+                          className="profile"
+                        />
                       ) : (
                         <div className="profiletext">{`${user.fName[0]}${user.lName[0]}`}</div>
                       )

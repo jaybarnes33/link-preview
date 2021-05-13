@@ -49,7 +49,7 @@ const Card = ({ data }) => {
           {data.reaction == "confused" && (
             <span title="Confused"> &#128533;</span>
           )}
-          {data.reaction == "Angry" && <span title="angry"> &#128545;</span>}
+          {data.reaction == "angry" && <span title="angry"> &#128545;</span>}
         </span>
         <Dropdown>
           <Dropdown.Toggle variant="dark" id="dropdown-basic">
@@ -126,8 +126,8 @@ const Card = ({ data }) => {
           padding: 50px 30px;
           border-radius: 10px;
           background-color: #ffffff;
-          width: min(75%, 250px);
-          height: 470px;
+          width: min(65vw, 220px);
+          height: 510px;
           margin: 20px;
           position: relative;
         }
