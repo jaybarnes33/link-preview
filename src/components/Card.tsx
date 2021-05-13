@@ -2,13 +2,31 @@ import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import { useState } from "react";
 import { mutate } from "swr";
-import { Dropdown } from "react-bootstrap";
+import { Button, Dropdown, Form } from "react-bootstrap";
 
 const Card = ({ data }) => {
   const [showCategory, setShowCategory] = useState(false);
   const [showReaction, setShowReaction] = useState(false);
+  const [category, setCategory] = useState("");
   const { user } = useUser();
 
+  const addCategory = async () => {
+    try {
+      const response = await makeSecuredRequest(
+        `/api/cards/${data._id}`,
+        "PUT",
+        {
+          category: category,
+        }
+      );
+
+      alert(response);
+      mutate(`/api/cards/user/${user?._id}`);
+      setShowCategory(false);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   const handleDelete = async () => {
     try {
       const response = await makeSecuredRequest(
@@ -40,6 +58,20 @@ const Card = ({ data }) => {
 
   return (
     <>
+      {showCategory && (
+        <dialog open>
+          <Form onSubmit={addCategory}>
+            <Form.Control
+              type="text"
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder={data?.category ? data?.category : "Enter category"}
+            />
+            <Button variant={"warning"} type="submit" className="mt-3">
+              Send
+            </Button>
+          </Form>
+        </dialog>
+      )}
       <div className="cardWrapper">
         <span className="reaction">
           {data.reaction == "like" && <span title="Like"> ❤️</span>}
@@ -70,6 +102,8 @@ const Card = ({ data }) => {
         {data.image?.length > 3 && (
           <img className="cardImage" src={data.image} alt={data.title} />
         )}
+
+        {data?.category && <div className="category">{data.category}</div>}
         {showReaction && (
           <div className="reactions">
             <div>
@@ -121,13 +155,26 @@ const Card = ({ data }) => {
         </div>
       </div>
       <style jsx>{`
+        .category {
+          position: relative;
+          right: 10px;
+          font-weight: bold;
+          text-align: right;
+          font-size: 0.9rem;
+        }
+        dialog {
+          position: fixed;
+          z-index: 999;
+          padding: 30px;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+        }
         .cardWrapper {
           box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
           padding: 50px 30px;
           border-radius: 10px;
           background-color: #ffffff;
           width: min(65vw, 220px);
-          height: 510px;
+          height: 540px;
           margin: 20px;
           position: relative;
         }
