@@ -18,11 +18,11 @@ const Cards = () => {
 
   return (
     <>
+      {data?.cards?.length === 0 && (
+        <Message variant="success">No link previews to show</Message>
+      )}
       <Container>
         <div className={styles.cardsWrapper}>
-          {data?.cards?.length === 0 && (
-            <Message variant="success">No link previews to show</Message>
-          )}
           {data?.cards?.map((card) => (
             <Card key={card._id} data={card} />
           ))}

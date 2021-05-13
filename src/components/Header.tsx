@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Navbar,
-  Container,
-  Nav,
-  Button,
-  Image,
-  NavDropdown,
-} from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
 import Router from "next/router";
 import useUser from "@/hooks/useUser";
@@ -31,7 +24,7 @@ const Header = () => {
       <Navbar expand="lg" collapseOnSelect>
         <Container>
           <Navbar.Brand>
-            <Link href="/">Links</Link>
+            <Link href="/">Cards</Link>
           </Navbar.Brand>
 
           {user && (

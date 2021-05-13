@@ -8,5 +8,6 @@ declare namespace NodeJS {
     AWS_KEY: string;
     AWS_REGION_: string;
     BUCKET: string;
+    PORT: number;
   }
 }

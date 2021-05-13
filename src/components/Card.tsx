@@ -3,6 +3,7 @@ import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import { useState } from "react";
 import { mutate } from "swr";
 import { Dropdown } from "react-bootstrap";
+
 const Card = ({ data }) => {
   const [showCategory, setShowCategory] = useState(false);
   const [showReaction, setShowReaction] = useState(false);
@@ -41,9 +42,14 @@ const Card = ({ data }) => {
     <>
       <div className="cardWrapper">
         <span className="reaction">
-          {data.reaction == "like" && <span>👍</span>}
-          {data.reaction == "love" && <span>😍</span>}
-          {data.reaction == "laugh" && <span>😂</span>}
+          {data.reaction == "like" && <span title="Like"> ❤️</span>}
+          {data.reaction == "support" && (
+            <span title="Support"> &#128079;</span>
+          )}
+          {data.reaction == "confused" && (
+            <span title="Confused"> &#128533;</span>
+          )}
+          {data.reaction == "Angry" && <span title="angry"> &#128545;</span>}
         </span>
         <Dropdown>
           <Dropdown.Toggle variant="dark" id="dropdown-basic">
@@ -66,17 +72,38 @@ const Card = ({ data }) => {
         )}
         {showReaction && (
           <div className="reactions">
-            <span id="love" onClick={(e) => handleReactions(e)}>
-              😍
-            </span>
-
-            <span id="laugh" onClick={(e) => handleReactions(e)}>
-              😂
-            </span>
-
-            <span id="like" onClick={(e) => handleReactions(e)}>
-              👍
-            </span>
+            <div>
+              <span id="like" title="Like" onClick={(e) => handleReactions(e)}>
+                ❤️
+              </span>
+            </div>
+            <div>
+              <span
+                id="support"
+                onClick={(e) => handleReactions(e)}
+                title="Support"
+              >
+                &#128079;
+              </span>
+            </div>
+            <div>
+              <span
+                id="confused"
+                onClick={(e) => handleReactions(e)}
+                title="Confused"
+              >
+                &#128533;
+              </span>
+            </div>
+            <div>
+              <span
+                id="angry"
+                onClick={(e) => handleReactions(e)}
+                title="Angry"
+              >
+                &#128545;
+              </span>
+            </div>
           </div>
         )}
         <div className="cardText">
@@ -115,7 +142,6 @@ const Card = ({ data }) => {
           width: 100%;
           height: 160px;
           object-fit: cover;
-
           border: 1px solid #2978b5;
           padding: 5px;
           border-radius: 20px;
@@ -131,7 +157,11 @@ const Card = ({ data }) => {
 
         .reactions {
           display: grid;
-          grid-template-columns: repeat(3, 20%);
+          grid-template-columns: repeat(4, 20%);
+        }
+
+        .reactions div {
+          position: relative;
         }
         .reactions span {
           font-size: 1.2rem;
