@@ -61,13 +61,26 @@ const Card = ({ data }) => {
       {showCategory && (
         <dialog open>
           <Form onSubmit={addCategory}>
-            <Form.Control
-              type="text"
-              onChange={(e) => setCategory(e.target.value)}
-              placeholder={data?.category ? data?.category : "Enter category"}
-            />
-            <Button variant={"warning"} type="submit" className="mt-3">
+            <Form.Group>
+              <Form.Label>Category</Form.Label>
+              <Form.Control
+                name="category"
+                aria-label="Enter Category"
+                type="text"
+                onChange={(e) => setCategory(e.target.value)}
+                placeholder={data?.category ? data?.category : "Enter category"}
+              />
+            </Form.Group>
+
+            <Button variant={"warning"} type="submit" className="mt-1 mr-2">
               Send
+            </Button>
+            <Button
+              variant={"warning"}
+              onClick={(e) => setShowCategory(false)}
+              className="mt-1 "
+            >
+              Close
             </Button>
           </Form>
         </dialog>
@@ -193,7 +206,7 @@ const Card = ({ data }) => {
           display: flex;
           margin: auto;
           width: 100%;
-          height: 160px;
+          height: 140px;
           object-fit: cover;
           border: 1px solid #2978b5;
           padding: 5px;
