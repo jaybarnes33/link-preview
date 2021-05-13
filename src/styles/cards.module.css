@@ -43,17 +43,15 @@
 .cardsWrapper {
   padding-top: 30px;
   margin-top: -20vh;
-  width: 100%;
   display: grid;
   place-items: center;
   position: relative;
+  overflow-x: hidden;
 }
 
 @media (min-width: 340px) and (max-width: 500px) {
   .input {
     width: 100%;
-  }
-  .form {
   }
 }
 
