@@ -11,8 +11,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const port = process.env.PORT;
 
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+app.use("/uploads", path.join(__dirname, "/uploads"));
 app.prepare().then(() => {
   createServer((req, res) => {
     // Be sure to pass `true` as the second argument to `url.parse`.

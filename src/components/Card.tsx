@@ -8,23 +8,18 @@ const Card = ({ data }) => {
   const [showCategory, setShowCategory] = useState(false);
   const [showReaction, setShowReaction] = useState(false);
   const [category, setCategory] = useState("");
+  const [message, setMessage] = useState("");
   const { user } = useUser();
 
   const addCategory = async () => {
     try {
-      const response = await makeSecuredRequest(
-        `/api/cards/${data._id}`,
-        "PUT",
-        {
-          category: category,
-        }
-      );
-
-      alert(response);
+      await makeSecuredRequest(`/api/cards/${data._id}`, "PUT", {
+        category: category,
+      });
       mutate(`/api/cards/user/${user?._id}`);
       setShowCategory(false);
     } catch (error) {
-      console.error(error.message);
+      setMessage(error.message);
     }
   };
   const handleDelete = async () => {

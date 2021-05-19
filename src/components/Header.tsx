@@ -67,7 +67,7 @@ const Header = () => {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto py-2">
                   <Nav.Item>
-                    <Nav.Link as={Link} href="/cards">
+                    <Nav.Link as={Link} href="/cards/all ">
                       <a>Cards</a>
                     </Nav.Link>
                   </Nav.Item>

@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "@/styles/dashboard.module.css";
 import useSWR from "swr";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
 import { Nav } from "react-bootstrap";
-import makeSecuredRequest from "@/utils/makeSecuredRequest";
 
 const links = () => {
-  const { user } = useUser();
-  const fetchCards = async (url: string) =>
-    await makeSecuredRequest(url, "GET");
-  const { data, error, isValidating } = useSWR(
-    `/api/cards/user/${user?._id}`,
-    fetchCards
-  );
+  const router = useRouter();
   const { isAuthenticated, authenticating } = useUser();
-  const [loading, setLoading] = useState(false);
+
+  const { category } = router.query;
   useEffect(() => {
     if (!authenticating && !isAuthenticated) {
       // if we're done loading and user isn't authenticated
@@ -25,12 +19,10 @@ const links = () => {
     }
   }, [isAuthenticated, authenticating]); // add authenticating to dependencies
 
-  const categories = new Map(data?.cards.map((card) => [card.category]));
   return (
     <Layout>
       <div className={styles.wrapper}>
-        {console.log(categories)}
-        <Cards />
+        <Cards category={category?.toString().toLowerCase()} />
       </div>
     </Layout>
   );

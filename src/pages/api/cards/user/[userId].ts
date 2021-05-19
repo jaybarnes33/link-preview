@@ -9,10 +9,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method == "GET") {
-    const { userId } = req.query;
+    const { userId, category } = req.query;
     const token = req.headers.authorization.split(" ")[1];
-
-    
 
     const userID = getUserID(token);
     if (!userID) return res.status(401).end("Unauthorized!");
@@ -20,8 +18,15 @@ export default async function handler(
     try {
       dbConnect();
 
-      const cards = await Card.find({ creator: userId.toString() }).sort({createdAt:-1});
-      res.status(200).json({cards});
+      const cards =
+        category == "all" || !category
+          ? await Card.find({ creator: userId.toString() }).sort({
+              createdAt: -1,
+            })
+          : await Card.find({
+              $and: [{ creator: userId }, { category: category }],
+            });
+      res.status(200).json({ cards });
     } catch (error) {
       res.status(500).json(error.message);
     }

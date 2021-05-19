@@ -4,15 +4,15 @@ import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
-import { useEffect, useState } from "react";
+
 import { Container } from "react-bootstrap";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
-const Cards = () => {
+const Cards = ({ category }) => {
   const { user } = useUser();
   const { data, error, isValidating } = useSWR(
-    `/api/cards/user/${user?._id}`,
+    `/api/cards/user/${user?._id}?category=${category}`,
     fetchCards
   ); // useSWR for caching and realtime mutations
 
