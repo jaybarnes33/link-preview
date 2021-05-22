@@ -151,12 +151,12 @@ sup {
   top: -0.5em;
 }
 a {
-  color: #007bff;
+  color: var(--light);
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #0056b3;
+  color: var(--warning);
   text-decoration: underline;
 }
 a:not([href]):not([class]) {

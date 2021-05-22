@@ -7,6 +7,7 @@ import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
 import { Nav } from "react-bootstrap";
 import Categories from "@/components/Categories";
+import Head from "next/head";
 
 const links = () => {
   const router = useRouter();
@@ -22,6 +23,9 @@ const links = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Cards || {category}</title>
+      </Head>
       <Categories />
       <div className={styles.wrapper}>
         <Cards category={category?.toString().toLowerCase()} />

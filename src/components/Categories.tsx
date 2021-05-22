@@ -1,6 +1,6 @@
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import useSWR from "swr";
-import { Nav } from "react-bootstrap";
+import { Nav, NavItem } from "react-bootstrap";
 import Link from "next/link";
 
 const Categories = () => {
@@ -10,11 +10,18 @@ const Categories = () => {
 
   console.log(data);
   return (
-    <nav className="category-nav">
-      <ul className="nav-links">
-        {data?.map((category: string) => (
-          <span className="ml-2">
-            <Link href={`/cards/${category}`}>{category}</Link>
+    <Nav className="category-nav">
+      <ul className="nav-links mx-auto">
+        {data?.map((category) => (
+          <span className="ml-2 px-2">
+            <i className="bi bi-pin mr-2"></i>
+            <Nav.Item
+              className="category-link"
+              as={Link}
+              href={`/cards/${category}`}
+            >
+              {category}
+            </Nav.Item>
           </span>
         ))}
       </ul>
@@ -28,12 +35,16 @@ const Categories = () => {
             align-items: center;
           }
 
-          .nav-links span >a{
-            color: red!important;
+          span {
+            color:#f4f4f4;
           }
+         
+         .category-link{
+          color:white;
+         }
         `}
       </style>
-    </nav>
+    </Nav>
   );
 };
 
