@@ -11,7 +11,8 @@ const Card = ({ data }) => {
   const [message, setMessage] = useState("");
   const { user } = useUser();
 
-  const addCategory = async () => {
+  const addCategory = async (e) => {
+    e.preventDefault();
     try {
       await makeSecuredRequest(`/api/cards/${data._id}`, "PUT", {
         category: category,
@@ -175,6 +176,7 @@ const Card = ({ data }) => {
           font-weight: bold;
           text-align: right;
           font-size: 0.9rem;
+          text-transform: capitalize;
         }
         dialog {
           position: fixed;

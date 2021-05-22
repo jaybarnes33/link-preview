@@ -97,11 +97,15 @@ nav .profiletext {
 .dropdown-toggle {
   color: #f4f4f4 !important;
 }
+
+a {
+  text-transform: capitalize;
+}
 a:hover {
   text-decoration: none;
 }
 * {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Sen", sans-serif;
 }
 
 .navbar-toggler {

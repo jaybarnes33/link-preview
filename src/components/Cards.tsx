@@ -12,7 +12,7 @@ const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 const Cards = ({ category }) => {
   const { user } = useUser();
   const { data, error, isValidating } = useSWR(
-    `/api/cards/user/${user?._id}?category=${category}`,
+    [`/api/cards/user/${user?._id}?category=${category}`, category],
     fetchCards
   ); // useSWR for caching and realtime mutations
 
