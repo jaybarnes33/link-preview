@@ -61,7 +61,7 @@
   }
 
   .cardsWrapper {
-    padding-top: 60px;
+    padding-top: 30px;
     left: 0;
     grid-template-columns: repeat(3, 33%);
   }
