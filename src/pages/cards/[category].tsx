@@ -28,7 +28,7 @@ const links = () => {
       </Head>
       <Categories />
       <div className={styles.wrapper}>
-        <Cards category={category?.toString().toLowerCase()} />
+        <Cards category={category} />
       </div>
     </Layout>
   );
