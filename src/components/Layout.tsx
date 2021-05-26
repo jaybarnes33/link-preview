@@ -14,6 +14,7 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         /> */}
       </Head>
+
       <main className="app">{children}</main>
 
       <Footer />

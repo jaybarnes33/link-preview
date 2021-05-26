@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import Link from "next/link";
 import Router from "next/router";
 import useUser from "@/hooks/useUser";
@@ -19,6 +19,10 @@ const Header = () => {
     setClicked(!clicked);
   };
 
+  const setTheme = (e) => {
+    document.documentElement.style.setProperty("--hue", e.target.id);
+  };
+
   return (
     <header>
       <Navbar expand="lg" collapseOnSelect>
@@ -26,7 +30,12 @@ const Header = () => {
           <Navbar.Brand>
             <Link href="/">Cards</Link>
           </Navbar.Brand>
-
+          <div className="theme-colors" onClick={setTheme}>
+            <Button id="211"></Button>
+            <Button id="354" variant="danger"></Button>
+            <Button id="134" variant="success"></Button>
+            <Button id="275" style={{ backgroundColor: "indigo" }}></Button>
+          </div>
           {user && (
             <>
               {" "}
