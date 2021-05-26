@@ -1,10 +1,9 @@
 import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import { useState } from "react";
-import { mutate } from "swr";
 import { Button, Dropdown, Form } from "react-bootstrap";
 
-const Card = ({ data }) => {
+const Card = ({ data, mutate }) => {
   const [showCategory, setShowCategory] = useState(false);
   const [showReaction, setShowReaction] = useState(false);
   const [category, setCategory] = useState("");
@@ -17,7 +16,7 @@ const Card = ({ data }) => {
       await makeSecuredRequest(`/api/cards/${data._id}`, "PUT", {
         category: category,
       });
-      mutate(`/api/cards/user/${user?._id}`);
+      mutate();
       setShowCategory(false);
     } catch (error) {
       setMessage(error.message);
@@ -31,7 +30,7 @@ const Card = ({ data }) => {
       );
 
       alert(response);
-      mutate(`/api/cards/user/${user?._id}`);
+      mutate();
     } catch (error) {
       console.error(error.message);
     }
@@ -48,7 +47,7 @@ const Card = ({ data }) => {
       );
 
       setShowReaction(false);
-      mutate(`/api/cards/user/${user?._id}`);
+      mutate();
     } catch (error) {}
   };
 
