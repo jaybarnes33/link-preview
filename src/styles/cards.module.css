@@ -54,6 +54,10 @@
   .input {
     width: 100%;
   }
+
+  .cardsWrapper {
+    margin-top: -18vh;
+  }
 }
 
 @media (min-width: 700px) {
