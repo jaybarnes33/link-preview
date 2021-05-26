@@ -23,7 +23,7 @@
 .addLink {
   position: fixed;
   right: 20px;
-  top: 90px;
+  top: 100px;
   z-index: 3;
 }
 .heading {
@@ -41,11 +41,12 @@
 }
 
 .cardsWrapper {
-  padding-top: 30px;
-  margin-top: -20vh;
+  padding-top: 0px;
+  margin-top: -25vh;
   display: grid;
   place-items: center;
   position: relative;
+
   overflow-x: hidden;
 }
 
@@ -61,8 +62,11 @@
   }
 
   .cardsWrapper {
-    padding-top: 30px;
     left: 0;
-    grid-template-columns: repeat(3, 33%);
+    grid-template-columns: repeat(4, 25%);
+  }
+
+  .cardsWrapper::-webkit-scrollbar {
+    display: none;
   }
 }

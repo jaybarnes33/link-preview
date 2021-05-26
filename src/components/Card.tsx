@@ -189,8 +189,8 @@ const Card = ({ data }) => {
           padding: 50px 30px;
           border-radius: 10px;
           background-color: #ffffff;
-          width: 210px;
-          height: 560px;
+          width: 79%;
+          height: 480px;
           margin: 20px;
           position: relative;
         }

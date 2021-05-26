@@ -53,7 +53,7 @@ header .theme-colors button {
 .dropdown .bi,
 .dropdown-toggle {
   background: none;
-  color: var(--main-color);
+  color: #101010;
   border: none;
 }
 
@@ -94,9 +94,9 @@ header .theme-colors button {
 .profiletext {
   position: relative;
   bottom: 0px;
-  width: 50px;
+  width: 40px;
   display: inline-block;
-  padding: 10px 15px;
+  padding: 8px 12px;
   height: 40px;
   border-radius: 50%;
   background-color: #007bff;
@@ -110,7 +110,7 @@ nav .profiletext {
 }
 
 .dropdown-item {
-  color: var(--main-color) !important;
+  color: #101010 !important;
 }
 
 .dropdown-toggle {
