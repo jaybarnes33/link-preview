@@ -36,7 +36,7 @@ const Categories = () => {
           }
 
           span {
-            color:red;
+            color:black;
  
           }
          
