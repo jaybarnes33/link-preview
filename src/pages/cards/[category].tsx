@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import styles from "@/styles/dashboard.module.css";
-import useSWR from "swr";
+
 import Router, { useRouter } from "next/router";
 import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
-import { Nav } from "react-bootstrap";
+
 import Categories from "@/components/Categories";
 import Head from "next/head";
 

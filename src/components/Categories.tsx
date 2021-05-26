@@ -12,7 +12,7 @@ const Categories = () => {
   return (
     <Nav className="category-nav">
       <ul className="nav-links mx-auto">
-        {["all", ...data]?.map((category) => (
+        {["all", ...(data || [])]?.map((category) => (
           <span className="ml-2 px-2">
             <i className="bi bi-pin mr-2"></i>
             <Nav.Item
