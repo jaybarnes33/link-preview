@@ -129,7 +129,7 @@ a:hover {
 
 .navbar-toggler {
   z-index: 4;
-  background-color: var(--text);
+  background-color: var(--main);
 }
 @media screen and (max-width: 995px) {
   /* .navbar-collapse {
