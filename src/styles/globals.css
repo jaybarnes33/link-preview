@@ -34,7 +34,7 @@ header .theme-colors {
   display: flex;
   justify-content: center;
   width: fit-content;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
 
 header .theme-colors button {
