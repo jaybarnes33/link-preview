@@ -56,7 +56,22 @@
   }
 }
 
+@media (min-width: 640px) {
+  .cardsWrapper {
+    top: -20px;
+    left: 0;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
 @media (min-width: 700px) {
+  .cardsWrapper {
+    top: -20px;
+    left: 0;
+    grid-template-columns: repeat(3, 33%);
+  }
+}
+@media (min-width: 996px) {
   .input {
     width: 600px;
   }
