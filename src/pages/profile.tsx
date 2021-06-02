@@ -126,10 +126,7 @@ const Profile = () => {
             <hr />
           </div>
           {user?.image ? (
-            <img
-              className={styles.profileImage}
-              src={`/uploads/${user?.image}`}
-            />
+            <img className={styles.profileImage} src={user?.image} />
           ) : (
             <div className="profiletext">{`${user?.fName[0]}${user?.lName[0]}`}</div>
           )}

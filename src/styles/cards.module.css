@@ -42,7 +42,7 @@
 
 .cardsWrapper {
   padding-top: 0px;
-  margin-top: -25vh;
+
   display: grid;
   place-items: center;
   position: relative;
@@ -54,10 +54,6 @@
   .input {
     width: 100%;
   }
-
-  .cardsWrapper {
-    margin-top: -18vh;
-  }
 }
 
 @media (min-width: 700px) {
@@ -66,6 +62,7 @@
   }
 
   .cardsWrapper {
+    top: -20px;
     left: 0;
     grid-template-columns: repeat(4, 25%);
   }

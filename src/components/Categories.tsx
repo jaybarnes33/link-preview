@@ -33,10 +33,11 @@ const Categories = () => {
             width:100%
             justify-content: center;
             align-items: center;
+            position: fixed;    
           }
 
           span {
-            color:black;
+            color:white;
  
           }
          

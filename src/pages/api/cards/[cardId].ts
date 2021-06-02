@@ -25,7 +25,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
       }
     } catch (error) {
-      console.log(error);
       res.status(500).end("Something went wrong");
     }
   }
@@ -54,7 +53,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
       }
     } catch (error) {
-      console.log(error);
       res.status(500).end("Something went wrong");
     }
   }

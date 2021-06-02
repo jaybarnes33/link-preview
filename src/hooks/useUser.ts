@@ -19,7 +19,7 @@ const useUser = () => {
         await getNewToken();
         setIsAuthenticated(true);
       } catch (error) {
-        console.log(error.response);
+        return;
       } finally {
         setAuthenticating(false);
       }
@@ -32,7 +32,7 @@ const useUser = () => {
     mutate,
     fetchingUser: !error && !user,
     authenticating,
-    isAuthenticated
+    isAuthenticated,
   };
 };
 

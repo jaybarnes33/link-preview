@@ -188,7 +188,7 @@ const Card = ({ data, mutate }) => {
           padding: 50px 30px;
           border-radius: 10px;
           background-color: #ffffff;
-          width: min(79%, 230px);
+          width: 210px;
           height: 480px;
           margin: 20px;
           position: relative;
@@ -202,7 +202,7 @@ const Card = ({ data, mutate }) => {
           display: flex;
           margin: auto;
           width: 100%;
-          height: 140px;
+          height: 120px;
           object-fit: cover;
           border: 1px solid #2978b5;
           padding: 5px;

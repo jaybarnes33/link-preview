@@ -29,7 +29,6 @@ export default async (
 
       res.json({ accessToken });
     } catch (err) {
-      console.log(err);
       res.status(500).end("Something went wrong");
     }
   }

@@ -11,13 +11,13 @@ h6 {
 } */
 
 :root {
-  --hue: 180;
-  --main-color: hsl(var(--hue), 100%, 50%);
+  --main-color: #f4f4f4;
+  --text: #101010;
 }
 
 .app {
   min-height: 100vh;
-  padding: 15vh 0;
+
   background-color: var(--main-color);
 }
 
@@ -27,7 +27,7 @@ header {
   box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
   z-index: 4;
-  background-color: hsl(var(--hue), 100%, 50%);
+  background-color: var(--main-color);
 }
 
 header .theme-colors {
@@ -62,7 +62,7 @@ header .theme-colors button {
 }
 
 .navbar-brand a {
-  color: white;
+  color: var(--text);
   font-weight: bold;
   font-size: 1.6rem;
   letter-spacing: 3px;
@@ -74,12 +74,12 @@ header .theme-colors button {
 }
 
 .nav-item a {
-  color: #f4f4f4;
+  color: var(--text);
   font-size: 1.2rem;
 }
 
 .nav-item a:hover {
-  color: #f4f4f4;
+  color: var(--text);
 }
 
 .profile {
@@ -114,7 +114,7 @@ nav .profiletext {
 }
 
 .dropdown-toggle {
-  color: #f4f4f4 !important;
+  color: var(--text) !important;
 }
 
 a {
@@ -129,6 +129,7 @@ a:hover {
 
 .navbar-toggler {
   z-index: 4;
+  background-color: var(--text);
 }
 @media screen and (max-width: 995px) {
   /* .navbar-collapse {

@@ -7,6 +7,10 @@ const Layout = ({ children }) => {
     <div>
       <Header />
       <Head>
+        <meta
+          name="description"
+          content="Bookmark links to your favorite sites"
+        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         {/* <link

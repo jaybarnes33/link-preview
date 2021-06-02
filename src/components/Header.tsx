@@ -20,7 +20,8 @@ const Header = () => {
   };
 
   const setTheme = (e) => {
-    document.documentElement.style.setProperty("--hue", e.target.id);
+    document.documentElement.style.setProperty("--main-color", e.target.id);
+    document.documentElement.style.setProperty("--text", "#f4f4f4");
   };
 
   return (
@@ -31,10 +32,20 @@ const Header = () => {
             <Link href="/">Cards</Link>
           </Navbar.Brand>
           <div className="theme-colors" onClick={setTheme}>
-            <Button id="211"></Button>
-            <Button id="354" variant="danger"></Button>
-            <Button id="134" variant="success"></Button>
-            <Button id="275" style={{ backgroundColor: "indigo" }}></Button>
+            <Button
+              id="#1a1a1a"
+              style={{ backgroundColor: "#101010", border: "#101010" }}
+            ></Button>
+            <Button id="#c82333" variant="danger"></Button>
+            <Button
+              id="#28a745"
+              variant="success"
+              style={{ backgroundColor: "#218838" }}
+            ></Button>
+            <Button
+              id="#21094e"
+              style={{ backgroundColor: "indigo", border: "indigo" }}
+            ></Button>
           </div>
           {user && (
             <>
@@ -89,10 +100,7 @@ const Header = () => {
                     id="profile"
                     title={
                       user?.image ? (
-                        <img
-                          src={`uploads/${user.image}`}
-                          className="profile"
-                        />
+                        <img src={`${user.image}`} className="profile" />
                       ) : (
                         <div className="profiletext">{`${user.fName[0]}${user.lName[0]}`}</div>
                       )

@@ -16,7 +16,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       res.status(200).json({ cards });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ error: error.message });
     }
   } else if (req.method == "POST") {
@@ -30,7 +29,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       const userID = getUserID(token);
-      console.log(userID);
 
       if (!userID) return res.status(401).end("Unauthorized!");
 
@@ -53,7 +51,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       res.status(201).json(card);
     } catch (error) {
-      console.log(error);
       res.status(500).json({ error: error.message });
     }
   }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
-import { mutate } from "swr";
+import useSWR from "swr";
 import useUser from "@/hooks/useUser";
 
 const AddLink = () => {
@@ -14,6 +14,12 @@ const AddLink = () => {
   const [show, setShow] = useState(false);
 
   const { user } = useUser();
+  const fetchCards = async (url: string) =>
+    await makeSecuredRequest(url, "GET");
+  const { data, error, isValidating, mutate } = useSWR(
+    [`/api/cards/user/${user?._id}`],
+    fetchCards
+  );
 
   useEffect(() => {
     if (loading) {

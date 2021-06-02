@@ -26,8 +26,9 @@ const links = () => {
       <Head>
         <title>Cards || {category}</title>
       </Head>
-      <Categories />
+
       <div className={styles.wrapper}>
+        <Categories />
         <Cards category={category} />
       </div>
     </Layout>
