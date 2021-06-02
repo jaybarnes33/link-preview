@@ -189,7 +189,7 @@ const Card = ({ data, mutate }) => {
           border-radius: 10px;
           background-color: #ffffff;
           width: 210px;
-          height: 480px;
+          height: 490px;
           margin: 20px;
           position: relative;
         }
