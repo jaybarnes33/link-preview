@@ -14,6 +14,11 @@
   border: none;
 }
 
+.main {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
 .main div {
   padding: 20px 40px;
   background-color: beige;
