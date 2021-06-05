@@ -91,6 +91,18 @@ header .theme-colors button {
   object-position: top;
 }
 
+.drop {
+  margin-top: -7px;
+  z-index: 10;
+}
+
+.drop a {
+  color: black;
+}
+
+.drop a:hover {
+  color: black;
+}
 .profiletext {
   position: relative;
   bottom: 0px;

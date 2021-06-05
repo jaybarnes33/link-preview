@@ -9,7 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method == "GET") {
-    const { userId, category } = req.query;
+    const { userId, category, reaction } = req.query;
     const token = req.headers.authorization.split(" ")[1];
 
     const userID = getUserID(token);
@@ -17,15 +17,28 @@ export default async function handler(
 
     try {
       dbConnect();
+      let cards;
 
-      const cards =
-        category == "all" || !category
-          ? await Card.find({ creator: userId.toString() }).sort({
-              createdAt: -1,
-            })
-          : await Card.find({
-              $and: [{ creator: userId }, { category: category }],
-            });
+      if (category) {
+        cards =
+          category == "all" || !category
+            ? await Card.find({ creator: userId.toString() }).sort({
+                createdAt: -1,
+              })
+            : await Card.find({
+                $and: [{ creator: userId }, { category: category }],
+              });
+      } else if (reaction) {
+        cards =
+          reaction == "all" || !reaction
+            ? await Card.find({ creator: userId.toString() }).sort({
+                createdAt: -1,
+              })
+            : await Card.find({
+                $and: [{ creator: userId }, { reaction: reaction }],
+              });
+      }
+
       res.status(200).json({ cards });
     } catch (error) {
       res.status(500).json(error.message);

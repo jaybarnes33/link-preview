@@ -6,14 +6,14 @@ import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
 
-import CategoriesNav from "@/components/Categories";
+import ReactionsNav from "@/components/Reactions";
 import Head from "next/head";
 
-const Categories = () => {
+const Reactions = () => {
   const router = useRouter();
   const { isAuthenticated, authenticating } = useUser();
 
-  const { category } = router.query;
+  const { reaction } = router.query;
   useEffect(() => {
     if (!authenticating && !isAuthenticated) {
       // if we're done loading and user isn't authenticated
@@ -24,15 +24,15 @@ const Categories = () => {
   return (
     <Layout>
       <Head>
-        <title>Cards || {category}</title>
+        <title>Cards || {reaction}</title>
       </Head>
 
       <div className={styles.wrapper}>
-        <CategoriesNav />
-        <Cards category={category} />
+        <ReactionsNav />
+        <Cards reaction={reaction} category="" />
       </div>
     </Layout>
   );
 };
 
-export default Categories;
+export default Reactions;

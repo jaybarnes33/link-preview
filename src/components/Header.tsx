@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import Link from "next/link";
+import useSWR from "swr";
 import Router from "next/router";
 import useUser from "@/hooks/useUser";
+import makeSecuredRequest from "@/utils/makeSecuredRequest";
 const Header = () => {
   const handleLogout = () => {
     const { sessionStorage } = window;
@@ -12,9 +14,28 @@ const Header = () => {
   const [clicked, setClicked] = useState(false);
   const { user } = useUser();
   const [name, setName] = useState("");
+  const [reactions, setReactions] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const fetchCategories = async () =>
+    await makeSecuredRequest("/api/cards/categories", "GET");
+  const { data: categoriesData } = useSWR(
+    `/api/cards/categories`,
+    fetchCategories
+  );
+
+  const fetchReactions = async () =>
+    await makeSecuredRequest("/api/cards/reactions", "GET");
+  const { data: reactionsData } = useSWR(
+    `/api/cards/reactions`,
+    fetchReactions
+  );
+
   useEffect(() => {
+    reactionsData && setReactions(["all", ...reactionsData]);
+
+    categoriesData && setCategories(["all", ...categoriesData]);
     user && setName(user.username);
-  }, [user]);
+  }, [user, reactionsData, categoriesData]);
   const handleClick = () => {
     setClicked(!clicked);
   };
@@ -91,6 +112,30 @@ const Header = () => {
                       <a>Cards</a>
                     </Nav.Link>
                   </Nav.Item>
+                  <NavDropdown
+                    className="drop"
+                    id="categories"
+                    title="Categories"
+                  >
+                    {categories?.map((category) => (
+                      <NavDropdown.Item>
+                        <Link href={`/cards/${category}`}>{category}</Link>
+                      </NavDropdown.Item>
+                    ))}
+                  </NavDropdown>
+                  <NavDropdown
+                    className="drop"
+                    id="reactions"
+                    title="Reactions"
+                  >
+                    {reactions?.map((reaction) => (
+                      <NavDropdown.Item>
+                        <Link href={`/cards/reaction/${reaction}`}>
+                          {reaction}
+                        </Link>
+                      </NavDropdown.Item>
+                    ))}
+                  </NavDropdown>
                   <Nav.Item>
                     <Nav.Link as={Link} href="/profile">
                       <a>Profile</a>

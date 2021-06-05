@@ -4,23 +4,23 @@ import { Nav, NavItem } from "react-bootstrap";
 import Link from "next/link";
 import { useEffect } from "react";
 
-const Categories = () => {
+const Reactions = () => {
   const fetchData = async () =>
-    await makeSecuredRequest("/api/cards/categories", "GET");
-  const { data } = useSWR(`/api/cards/categories`, fetchData); // useSWR for caching and realtime mutations
+    await makeSecuredRequest("/api/cards/reactions", "GET");
+  const { data } = useSWR(`/api/cards/reactions`, fetchData); // useSWR for caching and realtime mutations
 
   return (
     <Nav className="category-nav">
-      <ul className="nav-links">
-        {["all", ...(data || [])]?.map((category) => (
+      <ul className="nav-links mx-auto">
+        {["all", ...(data || [])]?.map((reaction) => (
           <span className="ml-2 px-2">
             <i className="bi bi-pin mr-2"></i>
             <Nav.Item
               className="category-link"
               as={Link}
-              href={`/cards/${category}`}
+              href={`/cards/reaction/${reaction}`}
             >
-              {category}
+              {reaction}
             </Nav.Item>
           </span>
         ))}
@@ -28,7 +28,7 @@ const Categories = () => {
 
       <style jsx>
         {`
-          .category-nav {
+           .category-nav {
             display: flex;
             width:100%
             justify-content: center;
@@ -37,8 +37,8 @@ const Categories = () => {
           }
 
           .nav-links{
-            display: grid;
-            grid-template-columns:  repeat(3,25%);
+            display: flex;
+            flex-wrap: wrap;
           }
 
           span {
@@ -55,4 +55,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Reactions;

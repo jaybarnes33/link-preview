@@ -9,10 +9,16 @@ import { Container } from "react-bootstrap";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
-const Cards = ({ category }) => {
+const Cards: React.FC<{
+  category?: string | string[];
+  reaction?: string | string[];
+}> = ({ category, reaction }) => {
   const { user } = useUser();
+
   const { data, error, isValidating, mutate } = useSWR(
-    [`/api/cards/user/${user?._id}?category=${category}`, category],
+    category
+      ? [`/api/cards/user/${user?._id}?category=${category}`, category]
+      : [`/api/cards/user/${user?._id}?reaction=${reaction}`, reaction],
     fetchCards
   ); // useSWR for caching and realtime mutations
 
