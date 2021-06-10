@@ -37,8 +37,8 @@ const Categories = () => {
           }
 
           .nav-links{
-            display: grid;
-            grid-template-columns:  repeat(3,25%);
+            display: flex;
+            flex-wrap: wrap;
           }
 
           span {
