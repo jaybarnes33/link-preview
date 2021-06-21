@@ -11,8 +11,8 @@ h6 {
 } */
 
 :root {
-  --main-color: #f4f4f4;
-  --text: #101010;
+  --main-color: #101010;
+  --text: #f4f4ee;
 }
 
 .app {
