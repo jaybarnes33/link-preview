@@ -84,7 +84,7 @@ const Profile = () => {
   const uploadBgHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    formData.append("bgImage", file);
+    formData.append("image", file);
     setUploading(true);
 
     try {
