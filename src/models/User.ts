@@ -8,6 +8,7 @@ export interface IUserSchema extends Document {
   username: string;
   password: string;
   country: string;
+  background: string;
 }
 
 const userSchema = new mongoose.Schema<IUserSchema>({
@@ -41,6 +42,9 @@ const userSchema = new mongoose.Schema<IUserSchema>({
     type: String,
     required: true,
   },
+  background: {
+    type: String
+  }
 });
 
 userSchema.pre("save", async function (next) {

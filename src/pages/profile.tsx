@@ -17,6 +17,7 @@ const Profile = () => {
   const { user, authenticating, isAuthenticated, mutate } = useUser();
   const [message, setMessage] = useState("");
   const [image, setImage] = useState("");
+  const [bgImage, setBgImage] = useState("");
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -46,6 +47,7 @@ const Profile = () => {
       }));
 
       setImage(user.image);
+      setBgImage(user.background);
     }
   }, [user, authenticating, isAuthenticated]);
 
@@ -79,6 +81,27 @@ const Profile = () => {
     }
   };
 
+  const uploadBgHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("bgImage", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "/multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/uploads", formData, config);
+      setBgImage(data);
+      setUploading(false);
+    } catch (error) {
+      setUploading(false);
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { fName, lName, password, username, email, country } = formData;
@@ -97,6 +120,7 @@ const Profile = () => {
             username,
             email,
             image,
+            bgImage
           }
         );
 
@@ -205,6 +229,21 @@ const Profile = () => {
                 </option>
               ))}
             </Form.Control>
+            <Form.Group controlId="image">
+              <Form.Control
+                type="text"
+                placeholder="Background Image URL"
+                value={bgImage}
+                onChange={(e) => setBgImage(e.target.value)}
+              ></Form.Control>
+              <Form.File
+                type="text"
+                label="Choose file"
+                custom
+                onChange={uploadBgHandler}
+              ></Form.File>
+              {uploading && <Loader />}
+            </Form.Group>
           </div>
           <Button type="submit" variant="warning" className="my-2 px-5">
             Update
