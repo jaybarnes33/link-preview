@@ -10,6 +10,10 @@ h6 {
   font-family: "Ubuntu Mono", monospace;
 } */
 
+
+.active-color {
+  display: none;
+}
 :root {
   --main-color: #101010;
   --text: #f4f4ee;
@@ -30,14 +34,14 @@ header {
   background-color: var(--main-color);
 }
 
-header .theme-colors {
+header #theme-colors {
   display: flex;
   justify-content: center;
   width: fit-content;
   gap: 0.7rem;
 }
 
-header .theme-colors button {
+header #theme-colors button {
   width: 35px;
   height: 35px;
   border-radius: 50%;

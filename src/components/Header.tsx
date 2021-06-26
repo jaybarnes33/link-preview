@@ -41,8 +41,12 @@ const Header = () => {
   };
 
   const setTheme = (e) => {
+    Array.from(document.getElementById("theme-colors").children).forEach(element => {
+      element.classList.contains("active-color") ? element.classList.remove("active-color") : null;
+    });
     document.documentElement.style.setProperty("--main-color", e.target.id);
-    document.documentElement.style.setProperty("--text", "#f4f4f4");
+    document.getElementById(e.target.id).classList.add("active-color");
+    document.documentElement.style.setProperty("--text", e.target.id === "#f4f4f4" ? "#101010": "#f4f4f4");
   };
 
   return (
@@ -52,10 +56,14 @@ const Header = () => {
           <Navbar.Brand>
             <Link href="/">Cards</Link>
           </Navbar.Brand>
-          <div className="theme-colors" onClick={setTheme}>
+          <div id="theme-colors" onClick={setTheme}>
             <Button
               id="#1a1a1a"
               style={{ backgroundColor: "#101010", border: "#101010" }}
+            ></Button>
+             <Button
+              id="#f4f4f4"
+              style={{ backgroundColor: "#f4f4f4", border: "#f4f4f4" }}
             ></Button>
             <Button id="#c82333" variant="danger"></Button>
             <Button
