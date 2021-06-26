@@ -7,12 +7,15 @@ import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
 import Head from "next/head";
 const dashboard = () => {
-  const { isAuthenticated, authenticating } = useUser();
+  const { isAuthenticated, authenticating ,user} = useUser();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (!authenticating && !isAuthenticated) {
       // if we're done loading and user isn't authenticated
       Router.replace("/login");
+    }
+    else{
+      user && user?.background ?  document.documentElement.style.setProperty("--bg-image", user.background) : null;
     }
   }, [isAuthenticated, authenticating]); // add authenticating to dependencies
   return (
@@ -24,6 +27,11 @@ const dashboard = () => {
         <AddLink />
         <Cards category="all" />
       </div>
+      <style jsx>
+        {`
+        
+        `}
+      </style>
     </Layout>
   );
 };

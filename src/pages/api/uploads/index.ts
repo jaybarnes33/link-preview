@@ -4,8 +4,7 @@ import multer from "multer";
 import nextConnect from "next-connect";
 import aws from "aws-sdk";
 import multerS3 from "multer-s3";
-import getUserID from "@/utils/get-userID";
-import User from "@/models/User";
+
 
 aws.config.update({
   secretAccessKey: process.env.AWS_KEY,

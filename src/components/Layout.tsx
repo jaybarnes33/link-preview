@@ -2,7 +2,10 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Head from "next/head";
+import useUser from "@/hooks/useUser";
 const Layout = ({ children }) => {
+
+  const {user} = useUser();
   return (
     <div>
       <Header />
@@ -22,6 +25,16 @@ const Layout = ({ children }) => {
       <main className="app">{children}</main>
 
       <Footer />
+
+      <style jsx>
+        {`
+        .app {
+          background-color: var(--main-color);
+         ${user && `background-image: url(${user.background})`} 
+        }
+        
+        `}
+      </style>
     </div>
   );
 };
