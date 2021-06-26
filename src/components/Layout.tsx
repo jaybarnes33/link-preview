@@ -31,7 +31,11 @@ const Layout = ({ children }) => {
         .app {
           background-color: var(--main-color);
          ${user && `background-image: url(${user.background})`} 
+
+         background-size:cover;
+        background-position: center;
         }
+        
         
         `}
       </style>
