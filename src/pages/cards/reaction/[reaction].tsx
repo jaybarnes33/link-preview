@@ -6,7 +6,6 @@ import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
 
-import ReactionsNav from "@/components/Reactions";
 import Head from "next/head";
 
 const Reactions = () => {
@@ -28,7 +27,7 @@ const Reactions = () => {
       </Head>
 
       <div className={styles.wrapper}>
-        <ReactionsNav />
+     
         <Cards reaction={reaction} category="" />
       </div>
     </Layout>

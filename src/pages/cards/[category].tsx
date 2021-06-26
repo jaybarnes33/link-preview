@@ -6,7 +6,7 @@ import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
 
-import CategoriesNav from "@/components/Categories";
+
 import Head from "next/head";
 
 const Categories = () => {
@@ -28,7 +28,7 @@ const Categories = () => {
       </Head>
 
       <div className={styles.wrapper}>
-        <CategoriesNav />
+   
         <Cards category={category} />
       </div>
     </Layout>
