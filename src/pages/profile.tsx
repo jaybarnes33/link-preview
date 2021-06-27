@@ -100,7 +100,7 @@ const Profile = () => {
     } catch (error) {
       setUploading(false);
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -120,7 +120,7 @@ const Profile = () => {
             username,
             email,
             image,
-            bgImage
+            bgImage,
           }
         );
 
