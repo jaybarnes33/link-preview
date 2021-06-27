@@ -159,10 +159,6 @@ a:hover {
     background-color: #f4f4f4ee;
   } */
 
-  nav {
-    background-color: var(--main-color);
-  }
-
   .nav-item {
     padding: 10px;
   }
