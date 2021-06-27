@@ -4,8 +4,7 @@ import Footer from "./Footer";
 import Head from "next/head";
 import useUser from "@/hooks/useUser";
 const Layout = ({ children }) => {
-
-  const {user} = useUser();
+  const { user } = useUser();
   return (
     <div>
       <Header />
@@ -28,14 +27,12 @@ const Layout = ({ children }) => {
 
       <style jsx>
         {`
-        .app {
-          background-color: var(--main-color);
-         ${user && `background: url(${user.background}) cover center`} 
-
-       
-        }
-
-        
+          .app {
+            background-color: var(--main-color);
+            ${user && `background-image: url(${user.background}); `}
+            background-size: cover;
+            background-blend-mode: overlay;
+          }
         `}
       </style>
     </div>

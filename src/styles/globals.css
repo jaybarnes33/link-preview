@@ -10,20 +10,17 @@ h6 {
   font-family: "Ubuntu Mono", monospace;
 } */
 
-
 .active-color {
   display: none;
 }
 :root {
   --main-color: #101010;
   --text: #f4f4ee;
-  --bg-image: ""
+  --bg-image: "";
 }
 
 .app {
   min-height: 100vh;
-
-
 }
 
 header {
@@ -32,7 +29,6 @@ header {
   box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3);
   width: 100%;
   z-index: 4;
-  background-color: var(--main-color);
 }
 
 header #theme-colors {
