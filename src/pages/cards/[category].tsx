@@ -6,8 +6,8 @@ import useUser from "@/hooks/useUser";
 import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
 
-
 import Head from "next/head";
+import AddLink from "@/components/AddLink";
 
 const Categories = () => {
   const router = useRouter();
@@ -28,7 +28,7 @@ const Categories = () => {
       </Head>
 
       <div className={styles.wrapper}>
-   
+        <AddLink />
         <Cards category={category} />
       </div>
     </Layout>

@@ -7,6 +7,7 @@ import Cards from "@/components/Cards";
 import Layout from "@/components/Layout";
 
 import Head from "next/head";
+import AddLink from "@/components/AddLink";
 
 const Reactions = () => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const Reactions = () => {
       </Head>
 
       <div className={styles.wrapper}>
-     
+        <AddLink />
         <Cards reaction={reaction} category="" />
       </div>
     </Layout>

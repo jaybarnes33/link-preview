@@ -188,7 +188,7 @@ const Card = ({ data, mutate }) => {
           padding: 50px 30px;
           border-radius: 10px;
           background-color: #ffffff;
-          width: 90%;
+          width: 240px;
           height: 475px;
           margin: 20px;
           position: relative;
@@ -265,6 +265,12 @@ const Card = ({ data, mutate }) => {
         @media screen and (max-width: 700px) {
           .cardWrapper {
             width: 215px;
+          }
+        }
+
+        @media screen and (min-width: 1500px) {
+          .cardWrapper {
+            width: 240px;
           }
         }
       `}</style>

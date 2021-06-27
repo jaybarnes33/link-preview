@@ -5,8 +5,6 @@ import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
 
-import { Container } from "react-bootstrap";
-
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
 const Cards: React.FC<{
@@ -27,16 +25,15 @@ const Cards: React.FC<{
       {data?.cards?.length === 0 && (
         <Message variant="success">No link previews to show</Message>
       )}
-      <Container>
-        <div className={styles.cardsWrapper}>
-          {data?.cards?.map((card) => (
-            <Card key={card._id} data={card} mutate={mutate} />
-          ))}
-          {!isValidating && error && (
-            <Message variant="danger">Failed to fetch cards</Message>
-          )}
-        </div>
-      </Container>
+
+      <div className={styles.cardsWrapper}>
+        {data?.cards?.map((card) => (
+          <Card key={card._id} data={card} mutate={mutate} />
+        ))}
+        {!isValidating && error && (
+          <Message variant="danger">Failed to fetch cards</Message>
+        )}
+      </div>
     </>
   );
 };

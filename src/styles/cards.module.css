@@ -41,7 +41,7 @@
 }
 
 .cardsWrapper {
-  padding-top: 0px;
+  padding: 0px;
 
   display: grid;
   place-items: center;
@@ -81,8 +81,13 @@
     left: 0;
     grid-template-columns: repeat(4, 25%);
   }
+}
 
-  .cardsWrapper::-webkit-scrollbar {
-    display: none;
+@media (min-width: 1400px) {
+  .cardsWrapper {
+    padding: 30px;
+    top: -10px;
+    left: 0;
+    grid-template-columns: repeat(5, 20%);
   }
 }
