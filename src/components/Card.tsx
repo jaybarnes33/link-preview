@@ -187,7 +187,7 @@ const Card = ({ data, mutate }) => {
           border-radius: 10px;
           background-color: #ffffff;
           width: 240px;
-          height: 475px;
+          height: 480px;
           margin: 20px;
           position: relative;
         }
@@ -209,7 +209,7 @@ const Card = ({ data, mutate }) => {
         }
 
         .cardTitle {
-          font-size: 1.3rem;
+          font-size: 1.1rem;
           color: #2978b5;
 
           font-weight: bold;
