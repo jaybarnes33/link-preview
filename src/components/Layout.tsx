@@ -7,7 +7,6 @@ const Layout = ({ children }) => {
   const { user } = useUser();
   return (
     <div>
-      <Header />
       <Head>
         <meta
           name="description"
@@ -21,7 +20,10 @@ const Layout = ({ children }) => {
         /> */}
       </Head>
 
-      <main className="app">{children}</main>
+      <main className="app">
+        <Header />
+        {children}
+      </main>
 
       <Footer />
 
