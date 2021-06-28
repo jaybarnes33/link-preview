@@ -202,7 +202,7 @@ const Card = ({ data, mutate }) => {
           width: 100%;
           height: 120px;
           object-fit: cover;
-          object-position: top;
+          object-position: center;
           border: 1px solid #2978b5;
           padding: 5px;
           border-radius: 20px;
