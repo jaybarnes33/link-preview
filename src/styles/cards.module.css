@@ -47,7 +47,7 @@
   place-items: center;
   position: relative;
 
-  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 @media (min-width: 340px) and (max-width: 500px) {

@@ -2,6 +2,7 @@ import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import { useState } from "react";
 import { Button, Dropdown, Form } from "react-bootstrap";
+import Message from "./Message";
 
 const Card = ({ data, mutate }) => {
   const [showCategory, setShowCategory] = useState(false);
@@ -38,13 +39,9 @@ const Card = ({ data, mutate }) => {
 
   const handleReactions = async (e) => {
     try {
-      const response = await makeSecuredRequest(
-        `/api/cards/${data._id}`,
-        "PUT",
-        {
-          reaction: e.target.id,
-        }
-      );
+      await makeSecuredRequest(`/api/cards/${data._id}`, "PUT", {
+        reaction: e.target.id,
+      });
 
       setShowReaction(false);
       mutate();
@@ -53,6 +50,7 @@ const Card = ({ data, mutate }) => {
 
   return (
     <>
+      {message && <Message>{message}</Message>}
       {showCategory && (
         <dialog open>
           <Form onSubmit={addCategory}>
@@ -62,7 +60,7 @@ const Card = ({ data, mutate }) => {
                 name="category"
                 aria-label="Enter Category"
                 type="text"
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={(e) => setCategory(e.target.value.toLowerCase())}
                 placeholder={data?.category ? data?.category : "Enter category"}
               />
             </Form.Group>
