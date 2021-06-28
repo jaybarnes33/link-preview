@@ -61,7 +61,7 @@ const Header = () => {
       <Navbar expand="lg" collapseOnSelect>
         <Container>
           <Navbar.Brand>
-            <Link href="/">Cards For Change</Link>
+            <Link href="/">Cardsforchange</Link>
           </Navbar.Brand>
           <div id="theme-colors" onClick={setTheme}>
             <Button
