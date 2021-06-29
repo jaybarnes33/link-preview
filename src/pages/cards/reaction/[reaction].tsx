@@ -29,7 +29,7 @@ const Reactions = () => {
 
       <div className={styles.wrapper}>
         <AddLink />
-        <Cards reaction={reaction} category="" />
+        <Cards reaction={reaction} />
       </div>
     </Layout>
   );

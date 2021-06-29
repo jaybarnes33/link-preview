@@ -29,7 +29,7 @@ const dashboard = () => {
       </Head>
       <div className={styles.wrapper}>
         <AddLink />
-        <Cards />
+        <Cards category="" />
       </div>
     </Layout>
   );

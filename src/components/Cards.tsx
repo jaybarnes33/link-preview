@@ -6,8 +6,6 @@ import styles from "@/styles/cards.module.css";
 import Message from "./Message";
 import { useCardContext } from "./CardContext";
 
-const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
-
 const Cards: React.FC<{
   category?: string | string[];
   reaction?: string | string[];
