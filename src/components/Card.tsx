@@ -184,8 +184,8 @@ const Card = ({ data, mutate }) => {
           padding: 50px 30px;
           border-radius: 10px;
           background-color: #ffffff;
-          width: 240px;
-          height: 480px;
+          width: min(85%, 250px);
+          height: 470px;
           margin: 20px;
           position: relative;
         }
@@ -259,17 +259,17 @@ const Card = ({ data, mutate }) => {
           font-size: 1.3rem;
         }
 
-        @media screen and (max-width: 700px) {
-          .cardWrapper {
-            width: 215px;
-          }
-        }
+        // @media screen and (max-width: 700px) {
+        //   .cardWrapper {
+        //     width: 230px;
+        //   }
+        // }
 
-        @media screen and (min-width: 1500px) {
-          .cardWrapper {
-            width: 240px;
-          }
-        }
+        // @media screen and (min-width: 1500px) {
+        //   .cardWrapper {
+        //     width: 240px;
+        //   }
+        // }
       `}</style>
     </>
   );
