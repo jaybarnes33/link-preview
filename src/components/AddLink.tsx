@@ -36,7 +36,7 @@ const AddLink = () => {
         url: link,
       });
 
-      mutate(`/api/cards/user/${user?._id}`);
+      mutate();
       setShow(false);
       setLoading(false);
 
