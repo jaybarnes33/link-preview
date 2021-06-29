@@ -4,21 +4,15 @@ import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import Card from "./Card";
 import styles from "@/styles/cards.module.css";
 import Message from "./Message";
+import { useCardContext } from "./CardContext";
 
 const fetchCards = async (url: string) => await makeSecuredRequest(url, "GET");
 
 const Cards: React.FC<{
   category?: string | string[];
   reaction?: string | string[];
-}> = ({ category, reaction }) => {
-  const { user } = useUser();
-
-  const { data, error, isValidating, mutate } = useSWR(
-    category
-      ? [`/api/cards/user/${user?._id}?category=${category}`, category]
-      : [`/api/cards/user/${user?._id}?reaction=${reaction}`, reaction],
-    fetchCards
-  ); // useSWR for caching and realtime mutations
+}> = () => {
+  const { data, error, mutate, isValidating } = useCardContext();
 
   return (
     <>

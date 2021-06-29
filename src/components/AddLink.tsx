@@ -4,22 +4,14 @@ import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
-import useSWR from "swr";
-import useUser from "@/hooks/useUser";
+import { useCardContext } from "./CardContext";
 
 const AddLink = () => {
   const [link, setLink] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-
-  const { user } = useUser();
-  const fetchCards = async (url: string) =>
-    await makeSecuredRequest(url, "GET");
-  const { data, error, isValidating, mutate } = useSWR(
-    [`/api/cards/user/${user?._id}`],
-    fetchCards
-  );
+  const { mutate } = useCardContext();
 
   useEffect(() => {
     if (loading) {

@@ -1,4 +1,3 @@
-import useUser from "@/hooks/useUser";
 import makeSecuredRequest from "@/utils/makeSecuredRequest";
 import { useState } from "react";
 import { Button, Dropdown, Form } from "react-bootstrap";
@@ -9,7 +8,6 @@ const Card = ({ data, mutate }) => {
   const [showReaction, setShowReaction] = useState(false);
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
-  const { user } = useUser();
 
   const addCategory = async (e) => {
     e.preventDefault();
